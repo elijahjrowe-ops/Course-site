@@ -6,7 +6,7 @@
   <title>FreeLearn - Free Online Courses</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#fff;--bg2:#f7f9fa;--bg3:#1c1d1f;--text:#1c1d1f;--text2:#6a6f73;--accent:#a435f0;--accent2:#8710d8;--success:#1e6055;--successbg:#acd2cc}
+    :root{--bg:#fff;--bg2:#f7f9fa;--bg3:#1c1d1f;--text:#1c1d1f;--text2:#6a6f73;--accent:#a435f0;--success:#1e6055}
     [data-theme="dark"]{--bg:#1c1d1f;--bg2:#2d2f31;--bg3:#3e4143;--text:#fff;--text2:#a1a5aa}
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
@@ -18,91 +18,88 @@
     .search-input:focus{outline:none;border-color:var(--accent)}
     .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text2)}
     .header-btns{display:flex;gap:8px;margin-left:auto}
-    .hdr-btn{padding:8px 12px;border:none;border-radius:4px;font-size:13px;font-family:inherit;cursor:pointer;font-weight:500}
-    .hdr-btn.ghost{background:none;color:var(--text)}
-    .hdr-btn.primary{background:var(--accent);color:#fff}
+    .hdr-btn{padding:8px 12px;border:none;border-radius:4px;font-size:13px;font-family:inherit;cursor:pointer;font-weight:500;background:none;color:var(--text)}
     .theme-toggle{width:36px;height:36px;border:none;background:none;font-size:18px;cursor:pointer}
     
     .hero{background:linear-gradient(135deg,#1c1d1f 0%,#3e4143 100%);color:#fff;padding:40px 20px}
-    .hero h1{font-size:28px;margin-bottom:8px}
+    .hero h1{font-size:24px;margin-bottom:8px}
     .hero p{color:#ccc;font-size:14px}
     
     .main{padding:20px 16px;max-width:1200px;margin:0 auto}
     
-    .section-title{font-size:20px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
-    .see-all{font-size:13px;color:var(--accent);cursor:pointer;font-weight:500}
+    .section-title{font-size:18px;font-weight:700;margin-bottom:16px}
     
     .categories{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:24px}
     .cat{padding:10px 16px;background:var(--bg2);border:1px solid rgba(0,0,0,0.1);border-radius:20px;font-size:13px;white-space:nowrap;cursor:pointer;font-weight:500}
     .cat.active{background:var(--accent);color:#fff;border-color:var(--accent)}
     
-    .courses{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:32px}
+    .courses{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:32px}
     .course-card{border:1px solid rgba(0,0,0,0.1);border-radius:8px;overflow:hidden;cursor:pointer;background:var(--bg);transition:box-shadow 0.2s}
     .course-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.1)}
     .course-thumb{aspect-ratio:16/9;background:var(--bg2);position:relative}
     .course-thumb img{width:100%;height:100%;object-fit:cover}
-    .course-badge{position:absolute;top:8px;left:8px;background:var(--success);color:#fff;padding:4px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase}
+    .course-badge{position:absolute;top:8px;left:8px;background:var(--success);color:#fff;padding:4px 8px;border-radius:4px;font-size:10px;font-weight:600}
     .course-progress{position:absolute;bottom:0;left:0;right:0;height:4px;background:rgba(0,0,0,0.2)}
-    .course-progress-bar{height:100%;background:var(--accent);transition:width 0.3s}
+    .course-progress-bar{height:100%;background:var(--accent)}
     .course-info{padding:12px}
-    .course-title{font-size:14px;font-weight:600;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.4}
+    .course-title{font-size:14px;font-weight:600;margin-bottom:4px;line-height:1.4}
     .course-instructor{font-size:12px;color:var(--text2);margin-bottom:6px}
     .course-meta{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--text2)}
-    .course-rating{display:flex;align-items:center;gap:4px;color:#b4690e;font-weight:600}
+    .course-rating{color:#b4690e;font-weight:600}
     .stars{color:#e59819}
-    .course-price{margin-top:8px;font-size:15px;font-weight:700}
-    .course-price.free{color:var(--success)}
+    .course-price{margin-top:8px;font-size:15px;font-weight:700;color:var(--success)}
     
-    .my-learning{margin-bottom:32px}
+    .continue-section{margin-bottom:32px}
     .continue-card{display:flex;gap:12px;padding:12px;border:1px solid rgba(0,0,0,0.1);border-radius:8px;margin-bottom:12px;cursor:pointer;background:var(--bg)}
-    .continue-thumb{width:100px;aspect-ratio:16/9;border-radius:4px;object-fit:cover;background:var(--bg2)}
-    .continue-info{flex:1;min-width:0}
-    .continue-title{font-size:13px;font-weight:600;margin-bottom:4px}
-    .continue-lesson{font-size:11px;color:var(--text2);margin-bottom:8px}
+    .continue-thumb{width:120px;aspect-ratio:16/9;border-radius:4px;object-fit:cover;background:var(--bg2)}
+    .continue-info{flex:1}
+    .continue-title{font-size:14px;font-weight:600;margin-bottom:4px}
+    .continue-lesson{font-size:12px;color:var(--text2);margin-bottom:8px}
     .progress-bar{height:6px;background:var(--bg2);border-radius:3px;overflow:hidden}
     .progress-fill{height:100%;background:var(--accent)}
-    .progress-text{font-size:10px;color:var(--text2);margin-top:4px}
+    .progress-text{font-size:11px;color:var(--text2);margin-top:4px}
     
-    /* Course Player */
-    .player-page{display:none;position:fixed;inset:0;background:var(--bg);z-index:200;flex-direction:column}
-    .player-page.active{display:flex}
+    /* PLAYER PAGE - FIXED */
+    .player-page{display:none;position:fixed;inset:0;background:var(--bg);z-index:200;overflow:auto}
+    .player-page.active{display:block}
+    
     .player-header{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg3);color:#fff}
-    .back-btn{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:4px}
+    .back-btn{background:none;border:none;color:#fff;font-size:24px;cursor:pointer;padding:4px}
     .player-title{flex:1;font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .player-progress-text{font-size:12px;color:#a1a5aa}
-    .player-body{display:flex;flex:1;overflow:hidden}
-    .video-area{flex:1;background:#000;display:flex;flex-direction:column}
-    .video-container{flex:1;position:relative}
-    .video-container iframe{width:100%;height:100%;border:none}
-    .video-info{padding:16px;background:var(--bg);border-top:1px solid rgba(0,0,0,0.1)}
-    .video-title{font-size:16px;font-weight:600;margin-bottom:8px}
-    .video-btns{display:flex;gap:8px}
-    .vid-btn{padding:8px 16px;border:1px solid rgba(0,0,0,0.2);border-radius:4px;background:var(--bg);color:var(--text);font-size:12px;cursor:pointer;font-family:inherit}
+    
+    .video-wrapper{width:100%;background:#000}
+    .video-container{width:100%;aspect-ratio:16/9;position:relative;background:#000}
+    .video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+    
+    .video-info{padding:16px;background:var(--bg);border-bottom:1px solid rgba(0,0,0,0.1)}
+    .video-title{font-size:18px;font-weight:600;margin-bottom:12px}
+    .video-btns{display:flex;gap:8px;flex-wrap:wrap}
+    .vid-btn{padding:10px 16px;border:1px solid rgba(0,0,0,0.2);border-radius:4px;background:var(--bg);color:var(--text);font-size:13px;cursor:pointer;font-family:inherit;font-weight:500}
+    .vid-btn:hover{background:var(--bg2)}
     .vid-btn.done{background:var(--success);color:#fff;border-color:var(--success)}
     
-    .sidebar{width:320px;background:var(--bg2);border-left:1px solid rgba(0,0,0,0.1);overflow-y:auto;display:none}
-    .sidebar.show{display:block}
-    .sidebar-header{padding:16px;border-bottom:1px solid rgba(0,0,0,0.1);font-weight:600}
-    .lesson-item{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;border-bottom:1px solid rgba(0,0,0,0.05)}
-    .lesson-item:hover{background:rgba(0,0,0,0.03)}
-    .lesson-item.active{background:rgba(164,53,240,0.1);border-left:3px solid var(--accent)}
-    .lesson-item.completed{opacity:0.7}
-    .lesson-check{width:20px;height:20px;border:2px solid var(--text2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+    .lessons-section{padding:16px;background:var(--bg)}
+    .lessons-header{font-size:16px;font-weight:600;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+    .lessons-list{border:1px solid rgba(0,0,0,0.1);border-radius:8px;overflow:hidden}
+    .lesson-item{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;border-bottom:1px solid rgba(0,0,0,0.05);background:var(--bg)}
+    .lesson-item:last-child{border-bottom:none}
+    .lesson-item:hover{background:var(--bg2)}
+    .lesson-item.active{background:rgba(164,53,240,0.1);border-left:4px solid var(--accent)}
     .lesson-item.completed .lesson-check{background:var(--success);border-color:var(--success);color:#fff}
-    .lesson-info{flex:1;min-width:0}
-    .lesson-num{font-size:10px;color:var(--text2)}
-    .lesson-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .lesson-dur{font-size:11px;color:var(--text2)}
-    
-    .toggle-sidebar{position:absolute;right:16px;top:50%;transform:translateY(-50%);background:var(--bg2);border:1px solid rgba(0,0,0,0.1);border-radius:4px;padding:8px 12px;font-size:12px;cursor:pointer;z-index:10}
+    .lesson-check{width:24px;height:24px;border:2px solid var(--text2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+    .lesson-info{flex:1}
+    .lesson-num{font-size:11px;color:var(--text2);margin-bottom:2px}
+    .lesson-name{font-size:14px;font-weight:500}
+    .lesson-dur{font-size:12px;color:var(--text2);flex-shrink:0}
     
     /* Notes Modal */
-    .notes-modal{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:300;display:none;align-items:center;justify-content:center;padding:20px}
-    .notes-modal.show{display:flex}
-    .notes-box{background:var(--bg);border-radius:8px;width:100%;max-width:500px;max-height:80vh;overflow:hidden;display:flex;flex-direction:column}
-    .notes-header{padding:16px;border-bottom:1px solid rgba(0,0,0,0.1);font-weight:600;display:flex;justify-content:space-between;align-items:center}
-    .notes-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--text)}
-    .notes-content{flex:1;overflow-y:auto;padding:16px}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:300;display:none;align-items:center;justify-content:center;padding:20px}
+    .modal.show{display:flex}
+    .modal-box{background:var(--bg);border-radius:8px;width:100%;max-width:500px;max-height:80vh;overflow:hidden;display:flex;flex-direction:column}
+    .modal-header{padding:16px;border-bottom:1px solid rgba(0,0,0,0.1);font-weight:600;display:flex;justify-content:space-between;align-items:center}
+    .modal-close{background:none;border:none;font-size:24px;cursor:pointer;color:var(--text)}
+    .modal-content{flex:1;overflow-y:auto;padding:16px}
     .note-input{width:100%;min-height:100px;border:1px solid rgba(0,0,0,0.2);border-radius:4px;padding:12px;font-family:inherit;font-size:14px;resize:vertical;margin-bottom:12px;background:var(--bg);color:var(--text)}
     .note-item{padding:12px;background:var(--bg2);border-radius:4px;margin-bottom:8px}
     .note-time{font-size:11px;color:var(--accent);font-weight:600;margin-bottom:4px}
@@ -113,31 +110,29 @@
     /* Certificate */
     .cert-modal{position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:300;display:none;align-items:center;justify-content:center;padding:20px}
     .cert-modal.show{display:flex}
-    .cert-box{background:#fff;border-radius:8px;padding:40px;text-align:center;max-width:500px;width:100%}
+    .cert-box{background:#fff;border-radius:12px;padding:40px;text-align:center;max-width:400px;width:100%}
     .cert-icon{font-size:60px;margin-bottom:16px}
     .cert-title{font-size:24px;font-weight:700;color:#1c1d1f;margin-bottom:8px}
-    .cert-course{font-size:16px;color:#6a6f73;margin-bottom:24px}
-    .cert-name{font-size:20px;font-weight:600;color:var(--accent);margin-bottom:24px}
-    .cert-btn{background:var(--accent);color:#fff;border:none;padding:12px 24px;border-radius:4px;cursor:pointer;font-family:inherit;font-weight:600;font-size:14px}
+    .cert-course{font-size:14px;color:#6a6f73;margin-bottom:24px}
+    .cert-btn{background:var(--accent);color:#fff;border:none;padding:12px 32px;border-radius:4px;cursor:pointer;font-family:inherit;font-weight:600;font-size:14px}
     
     .empty{text-align:center;padding:40px;color:var(--text2)}
     
-    @media(max-width:768px){
-      .sidebar{position:fixed;inset:0;width:100%;z-index:50}
+    @media(max-width:600px){
       .courses{grid-template-columns:1fr}
-      .hero h1{font-size:22px}
+      .continue-thumb{width:80px}
     }
   </style>
 </head>
 <body>
   <header class="header">
-    <div class="logo" onclick="goHome()">FreeLearn</div>
+    <div class="logo" onclick="goHome()">🎓 FreeLearn</div>
     <div class="search-box">
       <span class="search-icon">🔍</span>
       <input type="text" class="search-input" placeholder="Search courses..." id="searchInput" oninput="searchCourses()">
     </div>
     <div class="header-btns">
-      <button class="hdr-btn ghost" onclick="showMyLearning()">My Learning</button>
+      <button class="hdr-btn" onclick="showMyLearning()">My Learning</button>
       <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
     </div>
   </header>
@@ -145,76 +140,81 @@
   <div id="homePage">
     <div class="hero">
       <h1>Learn anything. 100% Free.</h1>
-      <p>Thousands of free courses from the best instructors worldwide</p>
+      <p>Real courses from top instructors - completely free forever</p>
     </div>
     
     <main class="main">
       <div class="categories" id="categories"></div>
       
-      <div class="my-learning" id="continueSection" style="display:none">
-        <div class="section-title">Continue Learning</div>
+      <div class="continue-section" id="continueSection" style="display:none">
+        <div class="section-title">📚 Continue Learning</div>
         <div id="continueList"></div>
       </div>
       
-      <div class="section-title">Popular Free Courses</div>
+      <div class="section-title">🔥 Popular Free Courses</div>
       <div class="courses" id="courseGrid"></div>
     </main>
   </div>
   
+  <!-- PLAYER PAGE -->
   <div class="player-page" id="playerPage">
     <div class="player-header">
       <button class="back-btn" onclick="exitCourse()">←</button>
       <div class="player-title" id="playerCourseTitle"></div>
-      <div class="player-progress-text" id="playerProgressText">0% complete</div>
+      <div class="player-progress-text" id="playerProgressText">0%</div>
     </div>
-    <div class="player-body">
-      <div class="video-area">
-        <div class="video-container" id="videoContainer">
-          <button class="toggle-sidebar" onclick="toggleSidebar()">📚 Lessons</button>
-        </div>
-        <div class="video-info">
-          <div class="video-title" id="videoTitle"></div>
-          <div class="video-btns">
-            <button class="vid-btn" id="completeBtn" onclick="toggleComplete()">✓ Mark Complete</button>
-            <button class="vid-btn" onclick="openNotes()">📝 Notes</button>
-            <button class="vid-btn" onclick="prevLesson()">← Prev</button>
-            <button class="vid-btn" onclick="nextLesson()">Next →</button>
-          </div>
-        </div>
+    
+    <div class="video-wrapper">
+      <div class="video-container" id="videoContainer"></div>
+    </div>
+    
+    <div class="video-info">
+      <div class="video-title" id="videoTitle">Select a lesson</div>
+      <div class="video-btns">
+        <button class="vid-btn" id="completeBtn" onclick="toggleComplete()">✓ Mark Complete</button>
+        <button class="vid-btn" onclick="openNotes()">📝 Notes</button>
+        <button class="vid-btn" onclick="prevLesson()">← Previous</button>
+        <button class="vid-btn" onclick="nextLesson()">Next →</button>
       </div>
-      <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">Course Content</div>
-        <div id="lessonList"></div>
+    </div>
+    
+    <div class="lessons-section">
+      <div class="lessons-header">
+        <span>Course Content</span>
+        <span id="lessonCount"></span>
       </div>
+      <div class="lessons-list" id="lessonList"></div>
     </div>
   </div>
   
-  <div class="notes-modal" id="notesModal">
-    <div class="notes-box">
-      <div class="notes-header">
+  <!-- Notes Modal -->
+  <div class="modal" id="notesModal">
+    <div class="modal-box">
+      <div class="modal-header">
         <span>📝 My Notes</span>
-        <button class="notes-close" onclick="closeNotes()">×</button>
+        <button class="modal-close" onclick="closeNotes()">×</button>
       </div>
-      <div class="notes-content">
-        <textarea class="note-input" id="noteInput" placeholder="Write a note..."></textarea>
+      <div class="modal-content">
+        <textarea class="note-input" id="noteInput" placeholder="Write a note for this lesson..."></textarea>
         <button class="save-note" onclick="saveNote()">Save Note</button>
         <div id="notesList" style="margin-top:16px"></div>
       </div>
     </div>
   </div>
   
+  <!-- Certificate Modal -->
   <div class="cert-modal" id="certModal">
     <div class="cert-box">
-      <div class="cert-icon">🎓</div>
+      <div class="cert-icon">🎉</div>
       <div class="cert-title">Congratulations!</div>
       <div class="cert-course" id="certCourse"></div>
-      <div class="cert-name" id="certName">You completed this course!</div>
-      <button class="cert-btn" onclick="closeCert()">Awesome!</button>
+      <div style="margin-bottom:24px;color:#1c1d1f">You completed this course!</div>
+      <button class="cert-btn" onclick="closeCert()">Continue Learning</button>
     </div>
   </div>
 
-  <script>
-// FREE COURSES DATABASE - Real YouTube playlists!
+<script>
+// COURSES DATABASE
 const courses = [
   {
     id: 1,
@@ -223,77 +223,70 @@ const courses = [
     category: "Programming",
     rating: 4.8,
     students: 2500000,
-    thumb: "https://img.youtube.com/vi/rfscVS0vtbw/maxresdefault.jpg",
+    thumb: "https://img.youtube.com/vi/rfscVS0vtbw/hqdefault.jpg",
     lessons: [
-      {title: "Introduction to Python", videoId: "rfscVS0vtbw", duration: "4:26:52", start: 0},
-      {title: "Variables & Data Types", videoId: "rfscVS0vtbw", duration: "15:00", start: 300},
-      {title: "Strings", videoId: "rfscVS0vtbw", duration: "20:00", start: 1200},
-      {title: "Numbers & Math", videoId: "rfscVS0vtbw", duration: "18:00", start: 2400},
-      {title: "User Input", videoId: "rfscVS0vtbw", duration: "12:00", start: 3480},
-      {title: "Lists", videoId: "rfscVS0vtbw", duration: "22:00", start: 4200},
-      {title: "Tuples", videoId: "rfscVS0vtbw", duration: "10:00", start: 5520},
-      {title: "Functions", videoId: "rfscVS0vtbw", duration: "25:00", start: 6120},
-      {title: "Conditionals", videoId: "rfscVS0vtbw", duration: "20:00", start: 7620},
-      {title: "Loops", videoId: "rfscVS0vtbw", duration: "18:00", start: 8820}
+      {title: "Introduction to Python", videoId: "rfscVS0vtbw", duration: "10:00"},
+      {title: "Installing Python", videoId: "rfscVS0vtbw", duration: "8:00", start: 600},
+      {title: "Variables", videoId: "rfscVS0vtbw", duration: "15:00", start: 1200},
+      {title: "Data Types", videoId: "rfscVS0vtbw", duration: "12:00", start: 2100},
+      {title: "Strings", videoId: "rfscVS0vtbw", duration: "18:00", start: 2820},
+      {title: "Numbers & Math", videoId: "rfscVS0vtbw", duration: "14:00", start: 3900},
+      {title: "User Input", videoId: "rfscVS0vtbw", duration: "10:00", start: 4740},
+      {title: "Lists", videoId: "rfscVS0vtbw", duration: "20:00", start: 5340}
     ]
   },
   {
     id: 2,
-    title: "JavaScript Full Course for Beginners",
+    title: "JavaScript Full Course",
     instructor: "freeCodeCamp",
     category: "Programming",
     rating: 4.9,
     students: 3200000,
-    thumb: "https://img.youtube.com/vi/PkZNo7MFNFg/maxresdefault.jpg",
+    thumb: "https://img.youtube.com/vi/PkZNo7MFNFg/hqdefault.jpg",
     lessons: [
-      {title: "Introduction", videoId: "PkZNo7MFNFg", duration: "10:00", start: 0},
-      {title: "Variables", videoId: "PkZNo7MFNFg", duration: "15:00", start: 600},
-      {title: "Data Types", videoId: "PkZNo7MFNFg", duration: "20:00", start: 1500},
-      {title: "Operators", videoId: "PkZNo7MFNFg", duration: "18:00", start: 2700},
-      {title: "Arrays", videoId: "PkZNo7MFNFg", duration: "25:00", start: 3780},
-      {title: "Functions", videoId: "PkZNo7MFNFg", duration: "30:00", start: 5280},
-      {title: "Objects", videoId: "PkZNo7MFNFg", duration: "22:00", start: 7080},
-      {title: "Loops", videoId: "PkZNo7MFNFg", duration: "20:00", start: 8400},
-      {title: "DOM Manipulation", videoId: "PkZNo7MFNFg", duration: "25:00", start: 9600},
-      {title: "Events", videoId: "PkZNo7MFNFg", duration: "18:00", start: 11100}
+      {title: "Introduction to JS", videoId: "PkZNo7MFNFg", duration: "8:00"},
+      {title: "Variables", videoId: "PkZNo7MFNFg", duration: "12:00", start: 480},
+      {title: "Data Types", videoId: "PkZNo7MFNFg", duration: "15:00", start: 1200},
+      {title: "Operators", videoId: "PkZNo7MFNFg", duration: "10:00", start: 2100},
+      {title: "Arrays", videoId: "PkZNo7MFNFg", duration: "18:00", start: 2700},
+      {title: "Functions", videoId: "PkZNo7MFNFg", duration: "20:00", start: 3780},
+      {title: "Objects", videoId: "PkZNo7MFNFg", duration: "16:00", start: 4980},
+      {title: "Loops", videoId: "PkZNo7MFNFg", duration: "14:00", start: 5940}
     ]
   },
   {
     id: 3,
-    title: "Web Development Full Course",
+    title: "HTML & CSS Full Course",
     instructor: "freeCodeCamp",
     category: "Web Development",
     rating: 4.7,
     students: 1800000,
-    thumb: "https://img.youtube.com/vi/mU6anWqZJcc/maxresdefault.jpg",
+    thumb: "https://img.youtube.com/vi/mU6anWqZJcc/hqdefault.jpg",
     lessons: [
-      {title: "HTML Basics", videoId: "mU6anWqZJcc", duration: "30:00", start: 0},
-      {title: "HTML Elements", videoId: "mU6anWqZJcc", duration: "25:00", start: 1800},
-      {title: "CSS Introduction", videoId: "mU6anWqZJcc", duration: "28:00", start: 3300},
-      {title: "CSS Selectors", videoId: "mU6anWqZJcc", duration: "22:00", start: 4980},
-      {title: "CSS Box Model", videoId: "mU6anWqZJcc", duration: "20:00", start: 6300},
-      {title: "Flexbox", videoId: "mU6anWqZJcc", duration: "30:00", start: 7500},
-      {title: "CSS Grid", videoId: "mU6anWqZJcc", duration: "25:00", start: 9300},
-      {title: "Responsive Design", videoId: "mU6anWqZJcc", duration: "22:00", start: 10800}
+      {title: "HTML Basics", videoId: "mU6anWqZJcc", duration: "20:00"},
+      {title: "HTML Elements", videoId: "mU6anWqZJcc", duration: "18:00", start: 1200},
+      {title: "Forms", videoId: "mU6anWqZJcc", duration: "15:00", start: 2280},
+      {title: "CSS Introduction", videoId: "mU6anWqZJcc", duration: "16:00", start: 3180},
+      {title: "CSS Selectors", videoId: "mU6anWqZJcc", duration: "14:00", start: 4140},
+      {title: "Box Model", videoId: "mU6anWqZJcc", duration: "18:00", start: 4980},
+      {title: "Flexbox", videoId: "mU6anWqZJcc", duration: "22:00", start: 6060}
     ]
   },
   {
     id: 4,
-    title: "React JS Full Course 2024",
+    title: "React JS Course",
     instructor: "freeCodeCamp",
     category: "Programming",
     rating: 4.8,
     students: 1500000,
-    thumb: "https://img.youtube.com/vi/bMknfKXIFA8/maxresdefault.jpg",
+    thumb: "https://img.youtube.com/vi/bMknfKXIFA8/hqdefault.jpg",
     lessons: [
-      {title: "React Introduction", videoId: "bMknfKXIFA8", duration: "20:00", start: 0},
-      {title: "Components", videoId: "bMknfKXIFA8", duration: "25:00", start: 1200},
-      {title: "JSX", videoId: "bMknfKXIFA8", duration: "18:00", start: 2700},
-      {title: "Props", videoId: "bMknfKXIFA8", duration: "22:00", start: 3780},
-      {title: "State", videoId: "bMknfKXIFA8", duration: "30:00", start: 5100},
-      {title: "Hooks", videoId: "bMknfKXIFA8", duration: "35:00", start: 6900},
-      {title: "useEffect", videoId: "bMknfKXIFA8", duration: "28:00", start: 9000},
-      {title: "Forms", videoId: "bMknfKXIFA8", duration: "20:00", start: 10680}
+      {title: "React Introduction", videoId: "bMknfKXIFA8", duration: "15:00"},
+      {title: "Components", videoId: "bMknfKXIFA8", duration: "20:00", start: 900},
+      {title: "JSX", videoId: "bMknfKXIFA8", duration: "12:00", start: 2100},
+      {title: "Props", videoId: "bMknfKXIFA8", duration: "18:00", start: 2820},
+      {title: "State", videoId: "bMknfKXIFA8", duration: "22:00", start: 3900},
+      {title: "Hooks", videoId: "bMknfKXIFA8", duration: "25:00", start: 5220}
     ]
   },
   {
@@ -303,139 +296,95 @@ const courses = [
     category: "Data Science",
     rating: 4.7,
     students: 980000,
-    thumb: "https://img.youtube.com/vi/LHBE6Q9XlzI/maxresdefault.jpg",
+    thumb: "https://img.youtube.com/vi/LHBE6Q9XlzI/hqdefault.jpg",
     lessons: [
-      {title: "Data Science Introduction", videoId: "LHBE6Q9XlzI", duration: "15:00", start: 0},
-      {title: "Numpy Basics", videoId: "LHBE6Q9XlzI", duration: "30:00", start: 900},
-      {title: "Pandas Introduction", videoId: "LHBE6Q9XlzI", duration: "35:00", start: 2700},
-      {title: "Data Cleaning", videoId: "LHBE6Q9XlzI", duration: "28:00", start: 4800},
-      {title: "Data Visualization", videoId: "LHBE6Q9XlzI", duration: "32:00", start: 6480},
-      {title: "Matplotlib", videoId: "LHBE6Q9XlzI", duration: "25:00", start: 8400},
-      {title: "Seaborn", videoId: "LHBE6Q9XlzI", duration: "20:00", start: 9900}
+      {title: "Data Science Intro", videoId: "LHBE6Q9XlzI", duration: "12:00"},
+      {title: "NumPy Basics", videoId: "LHBE6Q9XlzI", duration: "25:00", start: 720},
+      {title: "Pandas Intro", videoId: "LHBE6Q9XlzI", duration: "30:00", start: 2220},
+      {title: "Data Cleaning", videoId: "LHBE6Q9XlzI", duration: "22:00", start: 4020},
+      {title: "Visualization", videoId: "LHBE6Q9XlzI", duration: "28:00", start: 5340}
     ]
   },
   {
     id: 6,
-    title: "Machine Learning Full Course",
-    instructor: "freeCodeCamp",
-    category: "Data Science",
-    rating: 4.9,
-    students: 1200000,
-    thumb: "https://img.youtube.com/vi/NWONeJKn6kc/maxresdefault.jpg",
-    lessons: [
-      {title: "What is Machine Learning", videoId: "NWONeJKn6kc", duration: "20:00", start: 0},
-      {title: "Types of ML", videoId: "NWONeJKn6kc", duration: "25:00", start: 1200},
-      {title: "Linear Regression", videoId: "NWONeJKn6kc", duration: "35:00", start: 2700},
-      {title: "Logistic Regression", videoId: "NWONeJKn6kc", duration: "30:00", start: 4800},
-      {title: "Decision Trees", videoId: "NWONeJKn6kc", duration: "28:00", start: 6600},
-      {title: "Random Forest", videoId: "NWONeJKn6kc", duration: "25:00", start: 8280},
-      {title: "Neural Networks", videoId: "NWONeJKn6kc", duration: "40:00", start: 9780}
-    ]
-  },
-  {
-    id: 7,
-    title: "UI/UX Design Fundamentals",
-    instructor: "freeCodeCamp",
-    category: "Design",
-    rating: 4.6,
-    students: 650000,
-    thumb: "https://img.youtube.com/vi/c9Wg6Cb_YlU/maxresdefault.jpg",
-    lessons: [
-      {title: "Introduction to UI/UX", videoId: "c9Wg6Cb_YlU", duration: "15:00", start: 0},
-      {title: "User Research", videoId: "c9Wg6Cb_YlU", duration: "22:00", start: 900},
-      {title: "Wireframing", videoId: "c9Wg6Cb_YlU", duration: "28:00", start: 2220},
-      {title: "Prototyping", videoId: "c9Wg6Cb_YlU", duration: "25:00", start: 3900},
-      {title: "Visual Design", videoId: "c9Wg6Cb_YlU", duration: "30:00", start: 5400},
-      {title: "Design Systems", videoId: "c9Wg6Cb_YlU", duration: "20:00", start: 7200}
-    ]
-  },
-  {
-    id: 8,
-    title: "Git and GitHub for Beginners",
+    title: "Git & GitHub Crash Course",
     instructor: "freeCodeCamp",
     category: "Programming",
     rating: 4.8,
     students: 890000,
-    thumb: "https://img.youtube.com/vi/RGOj5yH7evk/maxresdefault.jpg",
+    thumb: "https://img.youtube.com/vi/RGOj5yH7evk/hqdefault.jpg",
     lessons: [
-      {title: "What is Git?", videoId: "RGOj5yH7evk", duration: "10:00", start: 0},
-      {title: "Installing Git", videoId: "RGOj5yH7evk", duration: "8:00", start: 600},
-      {title: "Git Init & Status", videoId: "RGOj5yH7evk", duration: "12:00", start: 1080},
-      {title: "Staging & Commits", videoId: "RGOj5yH7evk", duration: "15:00", start: 1800},
-      {title: "Branches", videoId: "RGOj5yH7evk", duration: "18:00", start: 2700},
-      {title: "Merging", videoId: "RGOj5yH7evk", duration: "14:00", start: 3780},
-      {title: "GitHub Introduction", videoId: "RGOj5yH7evk", duration: "12:00", start: 4620},
-      {title: "Push & Pull", videoId: "RGOj5yH7evk", duration: "16:00", start: 5340}
+      {title: "What is Git?", videoId: "RGOj5yH7evk", duration: "8:00"},
+      {title: "Installing Git", videoId: "RGOj5yH7evk", duration: "6:00", start: 480},
+      {title: "Git Commands", videoId: "RGOj5yH7evk", duration: "15:00", start: 840},
+      {title: "Branches", videoId: "RGOj5yH7evk", duration: "12:00", start: 1740},
+      {title: "GitHub", videoId: "RGOj5yH7evk", duration: "18:00", start: 2460},
+      {title: "Pull Requests", videoId: "RGOj5yH7evk", duration: "14:00", start: 3540}
     ]
   },
   {
-    id: 9,
-    title: "SQL Database Full Course",
+    id: 7,
+    title: "SQL Full Course",
     instructor: "freeCodeCamp",
     category: "Programming",
     rating: 4.7,
     students: 1100000,
-    thumb: "https://img.youtube.com/vi/HXV3zeQKqGY/maxresdefault.jpg",
+    thumb: "https://img.youtube.com/vi/HXV3zeQKqGY/hqdefault.jpg",
     lessons: [
-      {title: "What is SQL?", videoId: "HXV3zeQKqGY", duration: "12:00", start: 0},
-      {title: "Creating Tables", videoId: "HXV3zeQKqGY", duration: "18:00", start: 720},
-      {title: "Inserting Data", videoId: "HXV3zeQKqGY", duration: "15:00", start: 1800},
-      {title: "SELECT Queries", videoId: "HXV3zeQKqGY", duration: "22:00", start: 2700},
-      {title: "WHERE Clause", videoId: "HXV3zeQKqGY", duration: "18:00", start: 4020},
-      {title: "UPDATE & DELETE", videoId: "HXV3zeQKqGY", duration: "14:00", start: 5100},
-      {title: "JOIN Operations", videoId: "HXV3zeQKqGY", duration: "28:00", start: 5940},
-      {title: "Aggregate Functions", videoId: "HXV3zeQKqGY", duration: "20:00", start: 7620}
+      {title: "What is SQL?", videoId: "HXV3zeQKqGY", duration: "10:00"},
+      {title: "Creating Tables", videoId: "HXV3zeQKqGY", duration: "14:00", start: 600},
+      {title: "Inserting Data", videoId: "HXV3zeQKqGY", duration: "12:00", start: 1440},
+      {title: "SELECT Queries", videoId: "HXV3zeQKqGY", duration: "18:00", start: 2160},
+      {title: "WHERE Clause", videoId: "HXV3zeQKqGY", duration: "14:00", start: 3240},
+      {title: "JOIN Operations", videoId: "HXV3zeQKqGY", duration: "22:00", start: 4080}
+    ]
+  },
+  {
+    id: 8,
+    title: "Excel Tutorial for Beginners",
+    instructor: "freeCodeCamp",
+    category: "Business",
+    rating: 4.6,
+    students: 780000,
+    thumb: "https://img.youtube.com/vi/Vl0H-qTclOg/hqdefault.jpg",
+    lessons: [
+      {title: "Excel Basics", videoId: "Vl0H-qTclOg", duration: "15:00"},
+      {title: "Formulas", videoId: "Vl0H-qTclOg", duration: "20:00", start: 900},
+      {title: "Functions", videoId: "Vl0H-qTclOg", duration: "18:00", start: 2100},
+      {title: "Charts", videoId: "Vl0H-qTclOg", duration: "16:00", start: 3180},
+      {title: "Pivot Tables", videoId: "Vl0H-qTclOg", duration: "22:00", start: 4140}
+    ]
+  },
+  {
+    id: 9,
+    title: "UI/UX Design Course",
+    instructor: "freeCodeCamp",
+    category: "Design",
+    rating: 4.6,
+    students: 650000,
+    thumb: "https://img.youtube.com/vi/c9Wg6Cb_YlU/hqdefault.jpg",
+    lessons: [
+      {title: "UI vs UX", videoId: "c9Wg6Cb_YlU", duration: "10:00"},
+      {title: "User Research", videoId: "c9Wg6Cb_YlU", duration: "18:00", start: 600},
+      {title: "Wireframing", videoId: "c9Wg6Cb_YlU", duration: "22:00", start: 1680},
+      {title: "Prototyping", videoId: "c9Wg6Cb_YlU", duration: "20:00", start: 3000},
+      {title: "Visual Design", videoId: "c9Wg6Cb_YlU", duration: "24:00", start: 4200}
     ]
   },
   {
     id: 10,
-    title: "Photoshop for Beginners",
-    instructor: "Envato Tuts+",
-    category: "Design",
-    rating: 4.6,
-    students: 450000,
-    thumb: "https://img.youtube.com/vi/IyR_uYsRdPs/maxresdefault.jpg",
-    lessons: [
-      {title: "Photoshop Interface", videoId: "IyR_uYsRdPs", duration: "15:00", start: 0},
-      {title: "Layers Basics", videoId: "IyR_uYsRdPs", duration: "20:00", start: 900},
-      {title: "Selection Tools", videoId: "IyR_uYsRdPs", duration: "18:00", start: 2100},
-      {title: "Masking", videoId: "IyR_uYsRdPs", duration: "22:00", start: 3180},
-      {title: "Adjustments", videoId: "IyR_uYsRdPs", duration: "16:00", start: 4500},
-      {title: "Filters & Effects", videoId: "IyR_uYsRdPs", duration: "20:00", start: 5460}
-    ]
-  },
-  {
-    id: 11,
-    title: "Excel Full Course",
-    instructor: "freeCodeCamp",
-    category: "Business",
-    rating: 4.8,
-    students: 780000,
-    thumb: "https://img.youtube.com/vi/Vl0H-qTclOg/maxresdefault.jpg",
-    lessons: [
-      {title: "Excel Basics", videoId: "Vl0H-qTclOg", duration: "20:00", start: 0},
-      {title: "Formulas", videoId: "Vl0H-qTclOg", duration: "25:00", start: 1200},
-      {title: "Functions", videoId: "Vl0H-qTclOg", duration: "30:00", start: 2700},
-      {title: "Charts", videoId: "Vl0H-qTclOg", duration: "22:00", start: 4500},
-      {title: "Pivot Tables", videoId: "Vl0H-qTclOg", duration: "28:00", start: 5820},
-      {title: "VLOOKUP", videoId: "Vl0H-qTclOg", duration: "18:00", start: 7500}
-    ]
-  },
-  {
-    id: 12,
-    title: "Digital Marketing Full Course",
+    title: "Digital Marketing Course",
     instructor: "Simplilearn",
     category: "Marketing",
     rating: 4.5,
     students: 560000,
-    thumb: "https://img.youtube.com/vi/nU-IIXBWlS4/maxresdefault.jpg",
+    thumb: "https://img.youtube.com/vi/nU-IIXBWlS4/hqdefault.jpg",
     lessons: [
-      {title: "Digital Marketing Intro", videoId: "nU-IIXBWlS4", duration: "18:00", start: 0},
-      {title: "SEO Fundamentals", videoId: "nU-IIXBWlS4", duration: "25:00", start: 1080},
-      {title: "Social Media Marketing", videoId: "nU-IIXBWlS4", duration: "28:00", start: 2580},
-      {title: "Content Marketing", videoId: "nU-IIXBWlS4", duration: "22:00", start: 4260},
-      {title: "Email Marketing", videoId: "nU-IIXBWlS4", duration: "20:00", start: 5580},
-      {title: "Analytics", videoId: "nU-IIXBWlS4", duration: "24:00", start: 6780}
+      {title: "Digital Marketing Intro", videoId: "nU-IIXBWlS4", duration: "14:00"},
+      {title: "SEO Basics", videoId: "nU-IIXBWlS4", duration: "20:00", start: 840},
+      {title: "Social Media", videoId: "nU-IIXBWlS4", duration: "22:00", start: 2040},
+      {title: "Content Marketing", videoId: "nU-IIXBWlS4", duration: "18:00", start: 3360},
+      {title: "Email Marketing", videoId: "nU-IIXBWlS4", duration: "16:00", start: 4440}
     ]
   }
 ];
@@ -467,7 +416,7 @@ function toggleTheme() {
   save();
 }
 
-function formatStudents(n) {
+function formatNum(n) {
   if (n >= 1000000) return (n/1000000).toFixed(1) + 'M';
   if (n >= 1000) return (n/1000).toFixed(0) + 'K';
   return n;
@@ -476,6 +425,7 @@ function formatStudents(n) {
 function getProgress(courseId) {
   if (!progress[courseId]) return 0;
   const course = courses.find(c => c.id === courseId);
+  if (!course) return 0;
   const completed = progress[courseId].completed || [];
   return Math.round((completed.length / course.lessons.length) * 100);
 }
@@ -505,27 +455,29 @@ function searchCourses() {
 function renderCourses(list = null) {
   const filtered = list || (currentCategory === 'All' ? courses : courses.filter(c => c.category === currentCategory));
   
-  document.getElementById('courseGrid').innerHTML = filtered.map(c => {
-    const prog = getProgress(c.id);
-    return `
-      <div class="course-card" onclick="openCourse(${c.id})">
-        <div class="course-thumb">
-          <img src="${c.thumb}" onerror="this.src='https://via.placeholder.com/400x225/1c1d1f/fff?text=${encodeURIComponent(c.title)}'">
-          <div class="course-badge">Free</div>
-          ${prog > 0 ? `<div class="course-progress"><div class="course-progress-bar" style="width:${prog}%"></div></div>` : ''}
-        </div>
-        <div class="course-info">
-          <div class="course-title">${c.title}</div>
-          <div class="course-instructor">${c.instructor}</div>
-          <div class="course-meta">
-            <div class="course-rating"><span class="stars">★</span> ${c.rating}</div>
-            <span>(${formatStudents(c.students)} students)</span>
+  document.getElementById('courseGrid').innerHTML = filtered.length === 0 
+    ? '<div class="empty">No courses found</div>'
+    : filtered.map(c => {
+        const prog = getProgress(c.id);
+        return `
+          <div class="course-card" onclick="openCourse(${c.id})">
+            <div class="course-thumb">
+              <img src="${c.thumb}" onerror="this.style.display='none'">
+              <div class="course-badge">FREE</div>
+              ${prog > 0 ? `<div class="course-progress"><div class="course-progress-bar" style="width:${prog}%"></div></div>` : ''}
+            </div>
+            <div class="course-info">
+              <div class="course-title">${c.title}</div>
+              <div class="course-instructor">${c.instructor}</div>
+              <div class="course-meta">
+                <span class="course-rating"><span class="stars">★</span> ${c.rating}</span>
+                <span>(${formatNum(c.students)} students)</span>
+              </div>
+              <div class="course-price">Free</div>
+            </div>
           </div>
-          <div class="course-price free">Free</div>
-        </div>
-      </div>
-    `;
-  }).join('');
+        `;
+      }).join('');
 }
 
 function renderContinueLearning() {
@@ -546,13 +498,14 @@ function renderContinueLearning() {
   list.innerHTML = inProgress.map(c => {
     const prog = getProgress(c.id);
     const completed = progress[c.id]?.completed || [];
-    const nextLesson = c.lessons[completed.length] || c.lessons[0];
+    const nextIdx = completed.length < c.lessons.length ? completed.length : 0;
+    const nextLesson = c.lessons[nextIdx];
     return `
       <div class="continue-card" onclick="openCourse(${c.id})">
-        <img class="continue-thumb" src="${c.thumb}" onerror="this.src='https://via.placeholder.com/100x56'">
+        <img class="continue-thumb" src="${c.thumb}" onerror="this.style.background='#ddd'">
         <div class="continue-info">
           <div class="continue-title">${c.title}</div>
-          <div class="continue-lesson">Next: ${nextLesson.title}</div>
+          <div class="continue-lesson">▶ ${nextLesson.title}</div>
           <div class="progress-bar"><div class="progress-fill" style="width:${prog}%"></div></div>
           <div class="progress-text">${prog}% complete</div>
         </div>
@@ -562,45 +515,49 @@ function renderContinueLearning() {
 }
 
 function showMyLearning() {
-  currentCategory = 'All';
   const started = courses.filter(c => getProgress(c.id) > 0);
   if (started.length === 0) {
     alert('You haven\'t started any courses yet!');
     return;
   }
+  currentCategory = 'All';
+  renderCategories();
   renderCourses(started);
-  document.getElementById('searchInput').value = '';
 }
 
+// COURSE PLAYER
 function openCourse(id) {
   currentCourse = courses.find(c => c.id === id);
+  if (!currentCourse) return;
   
   // Find where user left off
   const completed = progress[id]?.completed || [];
   currentLessonIdx = completed.length < currentCourse.lessons.length ? completed.length : 0;
   
+  // Show player page
   document.getElementById('homePage').style.display = 'none';
   document.getElementById('playerPage').classList.add('active');
   document.getElementById('playerCourseTitle').textContent = currentCourse.title;
+  document.getElementById('lessonCount').textContent = currentCourse.lessons.length + ' lessons';
   
-  renderLessons();
+  renderLessonsList();
   playLesson(currentLessonIdx);
 }
 
 function exitCourse() {
-  document.getElementById('homePage').style.display = 'block';
   document.getElementById('playerPage').classList.remove('active');
-  document.getElementById('videoContainer').innerHTML = '<button class="toggle-sidebar" onclick="toggleSidebar()">📚 Lessons</button>';
+  document.getElementById('homePage').style.display = 'block';
+  document.getElementById('videoContainer').innerHTML = '';
   renderContinueLearning();
   renderCourses();
 }
 
-function renderLessons() {
+function renderLessonsList() {
   const completed = progress[currentCourse.id]?.completed || [];
   
   document.getElementById('lessonList').innerHTML = currentCourse.lessons.map((l, i) => `
     <div class="lesson-item ${i === currentLessonIdx ? 'active' : ''} ${completed.includes(i) ? 'completed' : ''}" onclick="playLesson(${i})">
-      <div class="lesson-check">${completed.includes(i) ? '✓' : ''}</div>
+      <div class="lesson-check">${completed.includes(i) ? '✓' : i + 1}</div>
       <div class="lesson-info">
         <div class="lesson-num">Lesson ${i + 1}</div>
         <div class="lesson-name">${l.title}</div>
@@ -609,26 +566,34 @@ function renderLessons() {
     </div>
   `).join('');
   
-  updateProgressText();
+  updateProgressDisplay();
 }
 
-function updateProgressText() {
+function updateProgressDisplay() {
   const prog = getProgress(currentCourse.id);
   document.getElementById('playerProgressText').textContent = prog + '% complete';
 }
 
 function playLesson(idx) {
+  if (idx < 0 || idx >= currentCourse.lessons.length) return;
+  
   currentLessonIdx = idx;
   const lesson = currentCourse.lessons[idx];
   const completed = progress[currentCourse.id]?.completed || [];
+  const startTime = lesson.start || 0;
   
+  // Load video
   document.getElementById('videoContainer').innerHTML = `
-    <iframe src="https://www.youtube.com/embed/${lesson.videoId}?start=${lesson.start}&autoplay=1&rel=0" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-    <button class="toggle-sidebar" onclick="toggleSidebar()">📚 Lessons</button>
+    <iframe 
+      src="https://www.youtube.com/embed/${lesson.videoId}?start=${startTime}&autoplay=1&rel=0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
   `;
   
   document.getElementById('videoTitle').textContent = lesson.title;
   
+  // Update complete button
   const btn = document.getElementById('completeBtn');
   if (completed.includes(idx)) {
     btn.classList.add('done');
@@ -638,7 +603,7 @@ function playLesson(idx) {
     btn.textContent = '✓ Mark Complete';
   }
   
-  renderLessons();
+  renderLessonsList();
 }
 
 function toggleComplete() {
@@ -647,22 +612,30 @@ function toggleComplete() {
   }
   
   const completed = progress[currentCourse.id].completed;
-  const idx = currentLessonIdx;
   
-  if (completed.includes(idx)) {
-    progress[currentCourse.id].completed = completed.filter(i => i !== idx);
+  if (completed.includes(currentLessonIdx)) {
+    progress[currentCourse.id].completed = completed.filter(i => i !== currentLessonIdx);
   } else {
-    completed.push(idx);
-    progress[currentCourse.id].completed = [...new Set(completed)].sort((a,b) => a-b);
+    completed.push(currentLessonIdx);
+    progress[currentCourse.id].completed = [...new Set(completed)].sort((a,b) => a - b);
   }
   
   save();
-  renderLessons();
-  playLesson(currentLessonIdx);
+  renderLessonsList();
+  
+  // Update button
+  const btn = document.getElementById('completeBtn');
+  if (progress[currentCourse.id].completed.includes(currentLessonIdx)) {
+    btn.classList.add('done');
+    btn.textContent = '✓ Completed';
+  } else {
+    btn.classList.remove('done');
+    btn.textContent = '✓ Mark Complete';
+  }
   
   // Check if course completed
   if (getProgress(currentCourse.id) === 100) {
-    showCertificate();
+    setTimeout(showCertificate, 500);
   }
 }
 
@@ -678,10 +651,7 @@ function nextLesson() {
   }
 }
 
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('show');
-}
-
+// NOTES
 function openNotes() {
   document.getElementById('notesModal').classList.add('show');
   renderNotes();
@@ -714,7 +684,7 @@ function renderNotes() {
   const lessonNotes = notes[key] || [];
   
   document.getElementById('notesList').innerHTML = lessonNotes.length === 0 
-    ? '<div class="empty">No notes for this lesson yet</div>'
+    ? '<div class="empty">No notes yet</div>'
     : lessonNotes.map((n, i) => `
         <div class="note-item">
           <span class="note-delete" onclick="deleteNote(${i})">Delete</span>
@@ -731,6 +701,7 @@ function deleteNote(idx) {
   renderNotes();
 }
 
+// CERTIFICATE
 function showCertificate() {
   document.getElementById('certCourse').textContent = currentCourse.title;
   document.getElementById('certModal').classList.add('show');
@@ -741,8 +712,8 @@ function closeCert() {
 }
 
 function goHome() {
-  document.getElementById('homePage').style.display = 'block';
   document.getElementById('playerPage').classList.remove('active');
+  document.getElementById('homePage').style.display = 'block';
   document.getElementById('searchInput').value = '';
   currentCategory = 'All';
   renderCategories();
@@ -750,7 +721,7 @@ function goHome() {
   renderContinueLearning();
 }
 
-// Init
+// INIT
 applyTheme();
 renderCategories();
 renderCourses();
