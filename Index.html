@@ -21,18 +21,19 @@
     .hdr-btn{padding:8px 12px;border:none;border-radius:4px;font-size:13px;font-family:inherit;cursor:pointer;font-weight:500;background:none;color:var(--text)}
     .theme-toggle{width:36px;height:36px;border:none;background:none;font-size:18px;cursor:pointer}
     
-    .hero{background:linear-gradient(135deg,#1c1d1f 0%,#3e4143 100%);color:#fff;padding:40px 20px}
+    .hero{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:40px 20px}
     .hero h1{font-size:24px;margin-bottom:8px}
-    .hero p{color:#ccc;font-size:14px}
+    .hero p{color:rgba(255,255,255,0.8);font-size:14px}
     
     .main{padding:20px 16px;max-width:1200px;margin:0 auto}
     .section-title{font-size:18px;font-weight:700;margin-bottom:16px}
     
     .categories{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:24px}
+    .categories::-webkit-scrollbar{height:0}
     .cat{padding:10px 16px;background:var(--bg2);border:1px solid rgba(0,0,0,0.1);border-radius:20px;font-size:13px;white-space:nowrap;cursor:pointer;font-weight:500}
     .cat.active{background:var(--accent);color:#fff;border-color:var(--accent)}
     
-    .courses{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:32px}
+    .courses{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:32px}
     .course-card{border:1px solid rgba(0,0,0,0.1);border-radius:8px;overflow:hidden;cursor:pointer;background:var(--bg);transition:box-shadow 0.2s}
     .course-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.1)}
     .course-thumb{aspect-ratio:16/9;background:var(--bg2);position:relative}
@@ -138,7 +139,7 @@
   <div id="homePage">
     <div class="hero">
       <h1>Learn anything. 100% Free.</h1>
-      <p>Curated video courses from top YouTube educators</p>
+      <p>50+ courses on coding, music, art, cooking, fitness & more</p>
     </div>
     
     <main class="main">
@@ -149,7 +150,7 @@
         <div id="continueList"></div>
       </div>
       
-      <div class="section-title">🔥 Popular Free Courses</div>
+      <div class="section-title">🔥 All Courses</div>
       <div class="courses" id="courseGrid"></div>
     </main>
   </div>
@@ -160,11 +161,9 @@
       <div class="player-title" id="playerCourseTitle"></div>
       <div class="player-progress-text" id="playerProgressText">0%</div>
     </div>
-    
     <div class="video-wrapper">
       <div class="video-container" id="videoContainer"></div>
     </div>
-    
     <div class="video-info">
       <div class="video-title" id="videoTitle">Select a lesson</div>
       <div class="video-channel" id="videoChannel"></div>
@@ -175,7 +174,6 @@
         <button class="vid-btn" onclick="nextLesson()">Next →</button>
       </div>
     </div>
-    
     <div class="lessons-section">
       <div class="lessons-header">
         <span>Course Content</span>
@@ -192,7 +190,7 @@
         <button class="modal-close" onclick="closeNotes()">×</button>
       </div>
       <div class="modal-content">
-        <textarea class="note-input" id="noteInput" placeholder="Write a note for this lesson..."></textarea>
+        <textarea class="note-input" id="noteInput" placeholder="Write a note..."></textarea>
         <button class="save-note" onclick="saveNote()">Save Note</button>
         <div id="notesList" style="margin-top:16px"></div>
       </div>
@@ -210,259 +208,542 @@
   </div>
 
 <script>
-// VERIFIED WORKING VIDEOS - All tested and available
 const courses = [
+  // ===== PROGRAMMING =====
   {
-    id: 1,
-    title: "Python for Beginners",
-    instructor: "Programming with Mosh",
-    category: "Programming",
-    rating: 4.9,
-    students: 2500000,
+    id: 1, title: "Python for Beginners", instructor: "Programming with Mosh", category: "Programming", rating: 4.9, students: 2500000,
     thumb: "https://img.youtube.com/vi/kqtD5dpn9C8/hqdefault.jpg",
     lessons: [
-      {title: "Python Tutorial - Full Course", videoId: "kqtD5dpn9C8", duration: "60:05"},
+      {title: "Python Full Course", videoId: "kqtD5dpn9C8", duration: "60:05"},
       {title: "Python Functions", videoId: "u-OmVr_fT4s", duration: "12:34"},
-      {title: "Python Classes and Objects", videoId: "wfcWRAxRVBA", duration: "17:38"},
-      {title: "Python Strings", videoId: "ioi__WRETk4", duration: "11:52"},
-      {title: "Python Lists", videoId: "tw7ror9x32s", duration: "10:44"},
-      {title: "Python Dictionaries", videoId: "XCcpzWs-CI4", duration: "11:01"}
+      {title: "Python Classes", videoId: "wfcWRAxRVBA", duration: "17:38"},
+      {title: "Python Lists", videoId: "tw7ror9x32s", duration: "10:44"}
     ]
   },
   {
-    id: 2,
-    title: "JavaScript Crash Course",
-    instructor: "Traversy Media",
-    category: "Programming",
-    rating: 4.8,
-    students: 3200000,
+    id: 2, title: "JavaScript Crash Course", instructor: "Traversy Media", category: "Programming", rating: 4.8, students: 3200000,
     thumb: "https://img.youtube.com/vi/hdI2bqOjy3c/hqdefault.jpg",
     lessons: [
-      {title: "JavaScript Crash Course For Beginners", videoId: "hdI2bqOjy3c", duration: "100:23"},
-      {title: "JavaScript DOM Crash Course Part 1", videoId: "0ik6X4DJKCc", duration: "39:03"},
-      {title: "JavaScript DOM Crash Course Part 2", videoId: "mPd2aJXCZ2g", duration: "21:50"},
-      {title: "JavaScript DOM Crash Course Part 3", videoId: "wK2cBMcDTss", duration: "33:43"},
-      {title: "JavaScript DOM Crash Course Part 4", videoId: "i37KVt_IcXw", duration: "22:09"},
-      {title: "Fetch API Introduction", videoId: "Oive66jrwBs", duration: "12:28"},
-      {title: "JSON Crash Course", videoId: "wI1CWzNtE-M", duration: "24:42"}
+      {title: "JavaScript Crash Course", videoId: "hdI2bqOjy3c", duration: "100:23"},
+      {title: "DOM Crash Course Part 1", videoId: "0ik6X4DJKCc", duration: "39:03"},
+      {title: "DOM Crash Course Part 2", videoId: "mPd2aJXCZ2g", duration: "21:50"},
+      {title: "Fetch API", videoId: "Oive66jrwBs", duration: "12:28"}
     ]
   },
   {
-    id: 3,
-    title: "HTML Crash Course",
-    instructor: "Traversy Media",
-    category: "Web Development",
-    rating: 4.7,
-    students: 1800000,
+    id: 3, title: "HTML & CSS", instructor: "Traversy Media", category: "Programming", rating: 4.7, students: 1800000,
     thumb: "https://img.youtube.com/vi/UB1O30fR-EE/hqdefault.jpg",
     lessons: [
-      {title: "HTML Crash Course For Beginners", videoId: "UB1O30fR-EE", duration: "60:00"},
-      {title: "HTML5 Semantic Tags", videoId: "kGW8Al_cga4", duration: "12:29"},
-      {title: "HTML Forms and Inputs", videoId: "fNcJuPIZ2WE", duration: "25:49"},
-      {title: "Build An HTML5 Website", videoId: "Wm6CUkswsNw", duration: "56:57"}
-    ]
-  },
-  {
-    id: 4,
-    title: "CSS Crash Course",
-    instructor: "Traversy Media",
-    category: "Web Development",
-    rating: 4.8,
-    students: 1500000,
-    thumb: "https://img.youtube.com/vi/yfoY53QXEnI/hqdefault.jpg",
-    lessons: [
-      {title: "CSS Crash Course For Beginners", videoId: "yfoY53QXEnI", duration: "85:10"},
+      {title: "HTML Crash Course", videoId: "UB1O30fR-EE", duration: "60:00"},
+      {title: "CSS Crash Course", videoId: "yfoY53QXEnI", duration: "85:10"},
       {title: "Flexbox in 20 Minutes", videoId: "JJSoEo8JSnc", duration: "20:49"},
-      {title: "CSS Grid Layout Crash Course", videoId: "jV8B24rSN5o", duration: "27:55"},
-      {title: "Build a Responsive Website", videoId: "p0bGHP-PXD4", duration: "58:00"},
-      {title: "CSS Variables Tutorial", videoId: "sQUB039MG0I", duration: "18:24"}
+      {title: "CSS Grid Crash Course", videoId: "jV8B24rSN5o", duration: "27:55"}
     ]
   },
   {
-    id: 5,
-    title: "React JS Crash Course",
-    instructor: "Traversy Media",
-    category: "Programming",
-    rating: 4.9,
-    students: 1400000,
+    id: 4, title: "React JS", instructor: "Traversy Media", category: "Programming", rating: 4.9, students: 1400000,
     thumb: "https://img.youtube.com/vi/w7ejDZ8SWv8/hqdefault.jpg",
     lessons: [
-      {title: "React JS Crash Course", videoId: "w7ejDZ8SWv8", duration: "108:47"},
-      {title: "React Hooks Crash Course", videoId: "iVRO0toVdYM", duration: "29:30"},
-      {title: "React Router 6 Tutorial", videoId: "59IXY5IDrBA", duration: "30:41"},
-      {title: "React Context API Tutorial", videoId: "35lXWvCuM8o", duration: "32:28"},
+      {title: "React Crash Course", videoId: "w7ejDZ8SWv8", duration: "108:47"},
+      {title: "React Hooks", videoId: "iVRO0toVdYM", duration: "29:30"},
       {title: "Redux Crash Course", videoId: "93p3LxR9xfM", duration: "46:23"}
     ]
   },
+
+  // ===== MUSIC =====
   {
-    id: 6,
-    title: "Node.js Crash Course",
-    instructor: "Traversy Media",
-    category: "Programming",
-    rating: 4.8,
-    students: 980000,
-    thumb: "https://img.youtube.com/vi/fBNz5xF-Kx4/hqdefault.jpg",
+    id: 5, title: "Guitar for Beginners", instructor: "JustinGuitar", category: "Music", rating: 4.9, students: 890000,
+    thumb: "https://img.youtube.com/vi/BBz-Jyr23M4/hqdefault.jpg",
     lessons: [
-      {title: "Node.js Crash Course", videoId: "fBNz5xF-Kx4", duration: "90:00"},
-      {title: "Express JS Crash Course", videoId: "L72fhGm1tfE", duration: "74:58"},
-      {title: "RESTful API Tutorial", videoId: "-MTSQjw5DrM", duration: "38:08"},
-      {title: "Node.js & Passport Login", videoId: "6FOq4cUdH8k", duration: "51:21"},
-      {title: "JWT Authentication Tutorial", videoId: "7nafaH9SLgs", duration: "27:21"}
+      {title: "First Guitar Lesson", videoId: "BBz-Jyr23M4", duration: "17:38"},
+      {title: "Easy Chord Changes", videoId: "4JmzCpqjRok", duration: "12:23"},
+      {title: "Your First Song", videoId: "5T7Bx3R5sWE", duration: "15:41"},
+      {title: "Strumming Patterns", videoId: "DlvIFihCsXs", duration: "18:22"},
+      {title: "Basic Music Theory", videoId: "MxPw4AxwQVA", duration: "14:55"}
     ]
   },
   {
-    id: 7,
-    title: "Git & GitHub Crash Course",
-    instructor: "Traversy Media",
-    category: "Programming",
-    rating: 4.8,
-    students: 890000,
+    id: 6, title: "Piano for Beginners", instructor: "Piano with Jonny", category: "Music", rating: 4.8, students: 650000,
+    thumb: "https://img.youtube.com/vi/827jmswqnEA/hqdefault.jpg",
+    lessons: [
+      {title: "First Piano Lesson", videoId: "827jmswqnEA", duration: "23:45"},
+      {title: "Reading Sheet Music", videoId: "M0t4Qjbx2DM", duration: "19:32"},
+      {title: "Piano Chords for Beginners", videoId: "xNPbOXJifXo", duration: "15:21"},
+      {title: "Playing Your First Song", videoId: "bgLnkqvvTj4", duration: "12:08"}
+    ]
+  },
+  {
+    id: 7, title: "Music Production", instructor: "In The Mix", category: "Music", rating: 4.7, students: 420000,
+    thumb: "https://img.youtube.com/vi/dXiIOLmdRks/hqdefault.jpg",
+    lessons: [
+      {title: "Music Production Basics", videoId: "dXiIOLmdRks", duration: "28:15"},
+      {title: "FL Studio Tutorial", videoId: "pDIsEZsalAo", duration: "60:00"},
+      {title: "Mixing for Beginners", videoId: "TEjOdqZFvhY", duration: "31:42"},
+      {title: "Mastering Explained", videoId: "xMiJGLBRpnM", duration: "18:33"}
+    ]
+  },
+  {
+    id: 8, title: "Singing Lessons", instructor: "Cheryl Porter", category: "Music", rating: 4.8, students: 380000,
+    thumb: "https://img.youtube.com/vi/ZATunybHm-g/hqdefault.jpg",
+    lessons: [
+      {title: "Beginner Vocal Warmup", videoId: "ZATunybHm-g", duration: "12:08"},
+      {title: "Breath Control", videoId: "5a6Rcx0qnkM", duration: "15:22"},
+      {title: "Extend Your Range", videoId: "3wYQOF2ltig", duration: "18:41"},
+      {title: "Sing High Notes", videoId: "gvt39mvL5-8", duration: "14:33"}
+    ]
+  },
+
+  // ===== COOKING =====
+  {
+    id: 9, title: "Cooking Basics", instructor: "Joshua Weissman", category: "Cooking", rating: 4.9, students: 720000,
+    thumb: "https://img.youtube.com/vi/ZJy1ajvMU1k/hqdefault.jpg",
+    lessons: [
+      {title: "Knife Skills 101", videoId: "ZJy1ajvMU1k", duration: "15:22"},
+      {title: "Perfect Scrambled Eggs", videoId: "LklVOk4JBVc", duration: "10:18"},
+      {title: "How to Make Pasta", videoId: "HdSLKZ6LN94", duration: "18:45"},
+      {title: "Perfect Rice Every Time", videoId: "Xx_OR6YeVZM", duration: "12:33"},
+      {title: "Basic Sauces", videoId: "wqECvYJKHPM", duration: "21:08"}
+    ]
+  },
+  {
+    id: 10, title: "Baking for Beginners", instructor: "Preppy Kitchen", category: "Cooking", rating: 4.8, students: 480000,
+    thumb: "https://img.youtube.com/vi/pYOa6hPOEYM/hqdefault.jpg",
+    lessons: [
+      {title: "Chocolate Chip Cookies", videoId: "pYOa6hPOEYM", duration: "8:12"},
+      {title: "Perfect Banana Bread", videoId: "YvH7sBG0Alg", duration: "7:45"},
+      {title: "Classic Brownies", videoId: "fDVqnx2JqHg", duration: "9:22"},
+      {title: "Easy Cake Recipe", videoId: "t5S6_ROcsmY", duration: "12:18"}
+    ]
+  },
+  {
+    id: 11, title: "Italian Cooking", instructor: "Italia Squisita", category: "Cooking", rating: 4.7, students: 320000,
+    thumb: "https://img.youtube.com/vi/ZFbBVCxfVP8/hqdefault.jpg",
+    lessons: [
+      {title: "Perfect Carbonara", videoId: "ZFbBVCxfVP8", duration: "8:35"},
+      {title: "Homemade Pizza", videoId: "G-jPoROGHGE", duration: "15:42"},
+      {title: "Fresh Pasta Dough", videoId: "HdSLKZ6LN94", duration: "18:45"},
+      {title: "Tiramisu Recipe", videoId: "7VTtenyE2wY", duration: "11:22"}
+    ]
+  },
+
+  // ===== FITNESS =====
+  {
+    id: 12, title: "Home Workout", instructor: "THENX", category: "Fitness", rating: 4.8, students: 920000,
+    thumb: "https://img.youtube.com/vi/UItWltVZZmE/hqdefault.jpg",
+    lessons: [
+      {title: "Complete Home Workout", videoId: "UItWltVZZmE", duration: "22:15"},
+      {title: "Build Muscle at Home", videoId: "Pv0eBN7-MKI", duration: "18:33"},
+      {title: "Core Workout", videoId: "DHD1-2P94DI", duration: "15:42"},
+      {title: "Push Up Variations", videoId: "IODxDxX7oi4", duration: "12:08"}
+    ]
+  },
+  {
+    id: 13, title: "Yoga for Beginners", instructor: "Yoga With Adriene", category: "Fitness", rating: 4.9, students: 1200000,
+    thumb: "https://img.youtube.com/vi/v7AYKMP6rOE/hqdefault.jpg",
+    lessons: [
+      {title: "Yoga For Complete Beginners", videoId: "v7AYKMP6rOE", duration: "23:21"},
+      {title: "Morning Yoga", videoId: "4pKly2JojMw", duration: "20:15"},
+      {title: "Yoga for Stress Relief", videoId: "hJbRpHZr_d0", duration: "28:42"},
+      {title: "Bedtime Yoga", videoId: "-g5aJQmN7sk", duration: "22:08"}
+    ]
+  },
+  {
+    id: 14, title: "Weight Training", instructor: "Jeff Nippard", category: "Fitness", rating: 4.8, students: 680000,
+    thumb: "https://img.youtube.com/vi/R6gZoAzAhCg/hqdefault.jpg",
+    lessons: [
+      {title: "Beginner Weight Training", videoId: "R6gZoAzAhCg", duration: "15:22"},
+      {title: "How to Build Muscle", videoId: "Fv5Wz8xi40k", duration: "12:45"},
+      {title: "Squat Tutorial", videoId: "ultWZbUMPL8", duration: "18:33"},
+      {title: "Deadlift Tutorial", videoId: "r4MzxtBKyNE", duration: "14:21"}
+    ]
+  },
+
+  // ===== ART & DRAWING =====
+  {
+    id: 15, title: "Drawing for Beginners", instructor: "Proko", category: "Art", rating: 4.8, students: 560000,
+    thumb: "https://img.youtube.com/vi/1EPNYWeEf1U/hqdefault.jpg",
+    lessons: [
+      {title: "How to Draw Basics", videoId: "1EPNYWeEf1U", duration: "18:22"},
+      {title: "Drawing Faces", videoId: "wAOldLWIDSM", duration: "24:15"},
+      {title: "Shading Techniques", videoId: "V3WmrWUEIJo", duration: "21:08"},
+      {title: "Drawing Hands", videoId: "2CmrMRXoA8Q", duration: "25:33"}
+    ]
+  },
+  {
+    id: 16, title: "Watercolor Painting", instructor: "Makoccino", category: "Art", rating: 4.7, students: 340000,
+    thumb: "https://img.youtube.com/vi/O-0L3DI6bm4/hqdefault.jpg",
+    lessons: [
+      {title: "Watercolor Basics", videoId: "O-0L3DI6bm4", duration: "15:42"},
+      {title: "Color Mixing", videoId: "Lk9gPPHl0YQ", duration: "18:21"},
+      {title: "Painting Skies", videoId: "qqDPVMjG13U", duration: "12:55"},
+      {title: "Watercolor Landscapes", videoId: "5Z08nM7CtPQ", duration: "22:18"}
+    ]
+  },
+  {
+    id: 17, title: "Digital Art", instructor: "Sinix Design", category: "Art", rating: 4.8, students: 420000,
+    thumb: "https://img.youtube.com/vi/9b7odHqHlpA/hqdefault.jpg",
+    lessons: [
+      {title: "Digital Painting Basics", videoId: "9b7odHqHlpA", duration: "15:33"},
+      {title: "Anatomy Quick Tips", videoId: "IVbqoy_JEV0", duration: "12:22"},
+      {title: "Coloring Tutorial", videoId: "gwLQ0cDb4cE", duration: "18:41"},
+      {title: "Paint Tool SAI Tutorial", videoId: "3Iv5u_pkfn0", duration: "21:15"}
+    ]
+  },
+
+  // ===== PHOTOGRAPHY =====
+  {
+    id: 18, title: "Photography Basics", instructor: "Peter McKinnon", category: "Photography", rating: 4.9, students: 780000,
+    thumb: "https://img.youtube.com/vi/LxO-6rlihSg/hqdefault.jpg",
+    lessons: [
+      {title: "Photography for Beginners", videoId: "LxO-6rlihSg", duration: "12:22"},
+      {title: "Camera Settings Explained", videoId: "F8T94sdiNjc", duration: "15:45"},
+      {title: "Composition Tips", videoId: "O8i7OKbWmRM", duration: "11:33"},
+      {title: "Natural Lighting", videoId: "WE6QnXMvW6s", duration: "14:18"}
+    ]
+  },
+  {
+    id: 19, title: "Photo Editing", instructor: "PHLEARN", category: "Photography", rating: 4.8, students: 520000,
+    thumb: "https://img.youtube.com/vi/IyR_uYsRdPs/hqdefault.jpg",
+    lessons: [
+      {title: "Photoshop Basics", videoId: "IyR_uYsRdPs", duration: "130:32"},
+      {title: "Lightroom Tutorial", videoId: "BG_r8CQGzyc", duration: "28:15"},
+      {title: "Color Grading", videoId: "K_ckEKwu_VA", duration: "18:42"},
+      {title: "Retouching Tutorial", videoId: "suDzka9C2Lw", duration: "22:08"}
+    ]
+  },
+
+  // ===== LANGUAGES =====
+  {
+    id: 20, title: "Spanish for Beginners", instructor: "SpanishPod101", category: "Languages", rating: 4.7, students: 680000,
+    thumb: "https://img.youtube.com/vi/DAp_v7EH9AA/hqdefault.jpg",
+    lessons: [
+      {title: "Spanish in 30 Minutes", videoId: "DAp_v7EH9AA", duration: "31:15"},
+      {title: "Spanish Alphabet", videoId: "hsLYD1Jyf3A", duration: "8:42"},
+      {title: "Common Spanish Phrases", videoId: "HvAdOvfrSvk", duration: "22:18"},
+      {title: "Spanish Verbs", videoId: "TlBVLYBcE0A", duration: "18:33"}
+    ]
+  },
+  {
+    id: 21, title: "French for Beginners", instructor: "FrenchPod101", category: "Languages", rating: 4.7, students: 520000,
+    thumb: "https://img.youtube.com/vi/ujDtm0hZyII/hqdefault.jpg",
+    lessons: [
+      {title: "French in 30 Minutes", videoId: "ujDtm0hZyII", duration: "28:45"},
+      {title: "French Pronunciation", videoId: "1qAVMqYNwx0", duration: "15:22"},
+      {title: "Common French Phrases", videoId: "N-2KWQOtXTo", duration: "42:15"},
+      {title: "French Grammar Basics", videoId: "bmsVshAs0hg", duration: "18:08"}
+    ]
+  },
+  {
+    id: 22, title: "Japanese for Beginners", instructor: "JapanesePod101", category: "Languages", rating: 4.8, students: 620000,
+    thumb: "https://img.youtube.com/vi/6p9Il_j0zjc/hqdefault.jpg",
+    lessons: [
+      {title: "Japanese for Beginners", videoId: "6p9Il_j0zjc", duration: "180:00"},
+      {title: "Hiragana in 1 Hour", videoId: "6p9Il_j0zjc", duration: "62:15"},
+      {title: "Basic Japanese Phrases", videoId: "ogz9NdSVg4I", duration: "45:33"},
+      {title: "Japanese Numbers", videoId: "F6lfOhU__1A", duration: "18:22"}
+    ]
+  },
+
+  // ===== BUSINESS =====
+  {
+    id: 23, title: "Excel Mastery", instructor: "Kevin Stratvert", category: "Business", rating: 4.7, students: 680000,
+    thumb: "https://img.youtube.com/vi/Vl0H-qTclOg/hqdefault.jpg",
+    lessons: [
+      {title: "Excel Full Course", videoId: "Vl0H-qTclOg", duration: "136:09"},
+      {title: "Excel Formulas", videoId: "HqoKHdNiL70", duration: "44:30"},
+      {title: "Pivot Tables", videoId: "qu-AK0Hv0b4", duration: "29:11"}
+    ]
+  },
+  {
+    id: 24, title: "Public Speaking", instructor: "Charisma on Command", category: "Business", rating: 4.8, students: 450000,
+    thumb: "https://img.youtube.com/vi/JWdZEumNRmI/hqdefault.jpg",
+    lessons: [
+      {title: "How to Speak with Confidence", videoId: "JWdZEumNRmI", duration: "12:15"},
+      {title: "Presentation Tips", videoId: "Iwpi1Lm6dFo", duration: "11:42"},
+      {title: "Body Language", videoId: "cFLjudWTuGQ", duration: "15:33"},
+      {title: "Storytelling Techniques", videoId: "Nj-hdQMa3uA", duration: "13:28"}
+    ]
+  },
+  {
+    id: 25, title: "Personal Finance", instructor: "Two Cents", category: "Business", rating: 4.8, students: 390000,
+    thumb: "https://img.youtube.com/vi/HQzoZfc3GwQ/hqdefault.jpg",
+    lessons: [
+      {title: "Investing for Beginners", videoId: "HQzoZfc3GwQ", duration: "10:15"},
+      {title: "How to Budget", videoId: "sVKQn2I4HDM", duration: "8:42"},
+      {title: "Credit Cards Explained", videoId: "bIBtodGFXHw", duration: "11:33"},
+      {title: "Retirement Planning", videoId: "wf5KAfZqE6g", duration: "12:18"}
+    ]
+  },
+
+  // ===== SCIENCE =====
+  {
+    id: 26, title: "Physics Basics", instructor: "Veritasium", category: "Science", rating: 4.9, students: 720000,
+    thumb: "https://img.youtube.com/vi/FjHJ7FmV0M4/hqdefault.jpg",
+    lessons: [
+      {title: "The Science of Thinking", videoId: "UBVV8pch1dM", duration: "11:42"},
+      {title: "How Electricity Works", videoId: "oI_X2cMHNe0", duration: "14:22"},
+      {title: "Gravity Explained", videoId: "XRr1kaXKBsU", duration: "18:15"},
+      {title: "Quantum Physics Intro", videoId: "p-MNSLsjjdo", duration: "15:33"}
+    ]
+  },
+  {
+    id: 27, title: "Chemistry Basics", instructor: "Tyler DeWitt", category: "Science", rating: 4.8, students: 480000,
+    thumb: "https://img.youtube.com/vi/FSyAehMdpyI/hqdefault.jpg",
+    lessons: [
+      {title: "Intro to Chemistry", videoId: "FSyAehMdpyI", duration: "15:22"},
+      {title: "The Periodic Table", videoId: "0RRVV4Diomg", duration: "12:45"},
+      {title: "Chemical Reactions", videoId: "yQP4UJhNn0I", duration: "18:33"},
+      {title: "Balancing Equations", videoId: "RnGu3xO2h74", duration: "14:08"}
+    ]
+  },
+  {
+    id: 28, title: "Astronomy Basics", instructor: "PBS Space Time", category: "Science", rating: 4.9, students: 560000,
+    thumb: "https://img.youtube.com/vi/rB0rkJwkMvk/hqdefault.jpg",
+    lessons: [
+      {title: "How the Universe Works", videoId: "rB0rkJwkMvk", duration: "12:42"},
+      {title: "Black Holes Explained", videoId: "ulCdoCfw-bY", duration: "15:22"},
+      {title: "The Big Bang", videoId: "wNDGgL73ihY", duration: "14:18"},
+      {title: "Dark Matter", videoId: "QAa2O_8wBUQ", duration: "13:45"}
+    ]
+  },
+
+  // ===== MATH =====
+  {
+    id: 29, title: "Algebra Basics", instructor: "Professor Leonard", category: "Math", rating: 4.9, students: 620000,
+    thumb: "https://img.youtube.com/vi/LwCRRUa8yTU/hqdefault.jpg",
+    lessons: [
+      {title: "Intro to Algebra", videoId: "LwCRRUa8yTU", duration: "42:15"},
+      {title: "Solving Equations", videoId: "TA4Qo8RUjHc", duration: "38:22"},
+      {title: "Graphing Lines", videoId: "rgvysb9emcQ", duration: "35:18"},
+      {title: "Quadratic Equations", videoId: "pfvPFqk8hPw", duration: "48:33"}
+    ]
+  },
+  {
+    id: 30, title: "Calculus Basics", instructor: "3Blue1Brown", category: "Math", rating: 4.9, students: 890000,
+    thumb: "https://img.youtube.com/vi/WUvTyaaNkzM/hqdefault.jpg",
+    lessons: [
+      {title: "Essence of Calculus", videoId: "WUvTyaaNkzM", duration: "17:04"},
+      {title: "Derivatives", videoId: "9vKqVkMQHKk", duration: "17:57"},
+      {title: "Integrals", videoId: "rfG8ce4nNh0", duration: "20:46"},
+      {title: "Chain Rule", videoId: "YG15m2VwSjA", duration: "18:21"}
+    ]
+  },
+
+  // ===== HISTORY =====
+  {
+    id: 31, title: "World History", instructor: "CrashCourse", category: "History", rating: 4.8, students: 780000,
+    thumb: "https://img.youtube.com/vi/Yocja_N5s1I/hqdefault.jpg",
+    lessons: [
+      {title: "Agricultural Revolution", videoId: "Yocja_N5s1I", duration: "11:10"},
+      {title: "Ancient Egypt", videoId: "Z3Wvw6BivVI", duration: "12:08"},
+      {title: "Ancient Greece", videoId: "Q-mkVSasZIM", duration: "11:44"},
+      {title: "Roman Empire", videoId: "oPf27gAup9U", duration: "12:25"},
+      {title: "The Renaissance", videoId: "Vufba_ZDvPM", duration: "12:42"}
+    ]
+  },
+  {
+    id: 32, title: "World War II", instructor: "Kings and Generals", category: "History", rating: 4.9, students: 520000,
+    thumb: "https://img.youtube.com/vi/Q78COTwT7nE/hqdefault.jpg",
+    lessons: [
+      {title: "How WW2 Started", videoId: "Q78COTwT7nE", duration: "20:15"},
+      {title: "D-Day Explained", videoId: "rQX1Pc5fvVY", duration: "22:33"},
+      {title: "Battle of Stalingrad", videoId: "1g2LgqYd0c8", duration: "18:42"},
+      {title: "Pacific Theatre", videoId: "iN5qiOcQj3A", duration: "25:18"}
+    ]
+  },
+
+  // ===== PERSONAL DEVELOPMENT =====
+  {
+    id: 33, title: "Meditation Basics", instructor: "Headspace", category: "Wellness", rating: 4.8, students: 680000,
+    thumb: "https://img.youtube.com/vi/thcEuMDWxoI/hqdefault.jpg",
+    lessons: [
+      {title: "What is Meditation?", videoId: "thcEuMDWxoI", duration: "3:42"},
+      {title: "Breathing Techniques", videoId: "aNXKjGFUlMs", duration: "5:15"},
+      {title: "10 Minute Meditation", videoId: "O-6f5wQXSu8", duration: "10:22"},
+      {title: "Sleep Meditation", videoId: "rvaqPPjtxng", duration: "15:08"}
+    ]
+  },
+  {
+    id: 34, title: "Productivity Hacks", instructor: "Thomas Frank", category: "Wellness", rating: 4.7, students: 450000,
+    thumb: "https://img.youtube.com/vi/IlU-zDU6aQ0/hqdefault.jpg",
+    lessons: [
+      {title: "How to Study Effectively", videoId: "IlU-zDU6aQ0", duration: "12:08"},
+      {title: "Morning Routine", videoId: "B12jLd0UoLg", duration: "9:45"},
+      {title: "Note Taking Tips", videoId: "AffuwyJZTQQ", duration: "11:22"},
+      {title: "Time Management", videoId: "iONDebHX9qk", duration: "14:33"}
+    ]
+  },
+
+  // ===== VIDEO & FILM =====
+  {
+    id: 35, title: "Video Editing Basics", instructor: "Premiere Gal", category: "Video", rating: 4.7, students: 420000,
+    thumb: "https://img.youtube.com/vi/Hls3Tp7JS8E/hqdefault.jpg",
+    lessons: [
+      {title: "Premiere Pro for Beginners", videoId: "Hls3Tp7JS8E", duration: "21:15"},
+      {title: "Basic Editing Techniques", videoId: "OJ-3d5IMa3k", duration: "18:42"},
+      {title: "Color Grading", videoId: "x0D5TZTQX5k", duration: "15:33"},
+      {title: "Adding Music & Sound", videoId: "62S8r0SKMCQ", duration: "12:08"}
+    ]
+  },
+  {
+    id: 36, title: "Cinematography", instructor: "StudioBinder", category: "Video", rating: 4.8, students: 340000,
+    thumb: "https://img.youtube.com/vi/3gXsKt5SO0Y/hqdefault.jpg",
+    lessons: [
+      {title: "Camera Angles Explained", videoId: "3gXsKt5SO0Y", duration: "10:22"},
+      {title: "Lighting Techniques", videoId: "2SexbdE3MfY", duration: "12:15"},
+      {title: "Shot Composition", videoId: "cIvGRi6tf8I", duration: "14:42"},
+      {title: "Camera Movement", videoId: "IiyBo-qLDeM", duration: "11:33"}
+    ]
+  },
+
+  // ===== GAMING =====
+  {
+    id: 37, title: "Chess for Beginners", instructor: "GothamChess", category: "Gaming", rating: 4.9, students: 580000,
+    thumb: "https://img.youtube.com/vi/OCSbzArwB10/hqdefault.jpg",
+    lessons: [
+      {title: "How to Play Chess", videoId: "OCSbzArwB10", duration: "26:42"},
+      {title: "Chess Openings", videoId: "3OK-S9oMcOY", duration: "22:15"},
+      {title: "Chess Tactics", videoId: "3I9Gbi8NJPU", duration: "18:33"},
+      {title: "Endgame Basics", videoId: "F9XD4WthENU", duration: "15:22"}
+    ]
+  },
+  {
+    id: 38, title: "Game Design", instructor: "Game Maker's Toolkit", category: "Gaming", rating: 4.8, students: 320000,
+    thumb: "https://img.youtube.com/vi/kMDe7_YwVKI/hqdefault.jpg",
+    lessons: [
+      {title: "Game Design Basics", videoId: "kMDe7_YwVKI", duration: "12:08"},
+      {title: "Level Design 101", videoId: "iNEe3KhMvXM", duration: "15:42"},
+      {title: "Player Psychology", videoId: "M27EKsXzPjA", duration: "11:22"},
+      {title: "Balancing Games", videoId: "tR-9oXiytsk", duration: "13:15"}
+    ]
+  },
+
+  // ===== MORE PROGRAMMING =====
+  {
+    id: 39, title: "Git & GitHub", instructor: "Traversy Media", category: "Programming", rating: 4.8, students: 890000,
     thumb: "https://img.youtube.com/vi/SWYqp7iY_Tc/hqdefault.jpg",
     lessons: [
       {title: "Git & GitHub Crash Course", videoId: "SWYqp7iY_Tc", duration: "32:41"},
-      {title: "Git Branches Tutorial", videoId: "e2IbNHi4uCI", duration: "14:27"},
-      {title: "Git Tutorial for Beginners", videoId: "DVRQoVRzMIY", duration: "45:21"},
-      {title: "GitHub Actions Tutorial", videoId: "R8_veQiYBjI", duration: "32:32"}
+      {title: "Git Branches", videoId: "e2IbNHi4uCI", duration: "14:27"},
+      {title: "Git Tutorial Full", videoId: "DVRQoVRzMIY", duration: "45:21"}
     ]
   },
   {
-    id: 8,
-    title: "SQL Tutorial",
-    instructor: "Programming with Mosh",
-    category: "Data Science",
-    rating: 4.7,
-    students: 1100000,
+    id: 40, title: "SQL Databases", instructor: "Programming with Mosh", category: "Programming", rating: 4.7, students: 720000,
     thumb: "https://img.youtube.com/vi/7S_tz1z_5bA/hqdefault.jpg",
     lessons: [
-      {title: "SQL Tutorial - Full Course", videoId: "7S_tz1z_5bA", duration: "190:20"},
-      {title: "MySQL Tutorial for Beginners", videoId: "HXV3zeQKqGY", duration: "200:47"},
-      {title: "PostgreSQL Tutorial", videoId: "qw--VYLpxG4", duration: "254:22"}
+      {title: "SQL Tutorial Full Course", videoId: "7S_tz1z_5bA", duration: "190:20"},
+      {title: "MySQL Tutorial", videoId: "HXV3zeQKqGY", duration: "200:47"}
     ]
   },
+
+  // ===== DESIGN =====
   {
-    id: 9,
-    title: "MongoDB Crash Course",
-    instructor: "Traversy Media",
-    category: "Data Science",
-    rating: 4.7,
-    students: 650000,
-    thumb: "https://img.youtube.com/vi/-56x56UppqQ/hqdefault.jpg",
-    lessons: [
-      {title: "MongoDB Crash Course", videoId: "-56x56UppqQ", duration: "36:52"},
-      {title: "Mongoose Crash Course", videoId: "DZBGEVgL2eE", duration: "33:41"},
-      {title: "MongoDB with Node.js", videoId: "fbYExfeFsI0", duration: "29:48"},
-      {title: "Full Stack MERN App", videoId: "-0exw-9YJBo", duration: "102:47"}
-    ]
-  },
-  {
-    id: 10,
-    title: "TypeScript Crash Course",
-    instructor: "Traversy Media",
-    category: "Programming",
-    rating: 4.8,
-    students: 520000,
-    thumb: "https://img.youtube.com/vi/BCg4U1FzODs/hqdefault.jpg",
-    lessons: [
-      {title: "TypeScript Crash Course", videoId: "BCg4U1FzODs", duration: "53:51"},
-      {title: "TypeScript Tutorial", videoId: "WBPrJSw7yQA", duration: "45:30"},
-      {title: "React & TypeScript Tutorial", videoId: "jrKcJxF0lAU", duration: "60:00"},
-      {title: "TypeScript Generics", videoId: "nViEqpgwxHE", duration: "19:32"}
-    ]
-  },
-  {
-    id: 11,
-    title: "Tailwind CSS Crash Course",
-    instructor: "Traversy Media",
-    category: "Web Development",
-    rating: 4.8,
-    students: 480000,
-    thumb: "https://img.youtube.com/vi/UBOj6rqRUME/hqdefault.jpg",
-    lessons: [
-      {title: "Tailwind CSS Crash Course", videoId: "UBOj6rqRUME", duration: "30:33"},
-      {title: "Tailwind CSS Full Course", videoId: "dFgzHOX84xQ", duration: "180:00"},
-      {title: "Build a Website with Tailwind", videoId: "8eQwgc9nc64", duration: "91:37"},
-      {title: "Tailwind CSS Card Component", videoId: "5hAdaLkLpWU", duration: "15:21"}
-    ]
-  },
-  {
-    id: 12,
-    title: "Vue.js Crash Course",
-    instructor: "Traversy Media",
-    category: "Programming",
-    rating: 4.7,
-    students: 420000,
-    thumb: "https://img.youtube.com/vi/qZXt1Aom3Cs/hqdefault.jpg",
-    lessons: [
-      {title: "Vue.js Crash Course", videoId: "qZXt1Aom3Cs", duration: "60:26"},
-      {title: "Vue 3 Crash Course", videoId: "ZqgiuPt5QZo", duration: "60:00"},
-      {title: "Vue.js Task Tracker", videoId: "qhjxAP1hFuI", duration: "88:10"},
-      {title: "Vuex Crash Course", videoId: "5lVQgZzLMHc", duration: "41:17"}
-    ]
-  },
-  {
-    id: 13,
-    title: "PHP Crash Course",
-    instructor: "Traversy Media",
-    category: "Programming",
-    rating: 4.6,
-    students: 380000,
-    thumb: "https://img.youtube.com/vi/BUCiSSyIGGU/hqdefault.jpg",
-    lessons: [
-      {title: "PHP Crash Course", videoId: "BUCiSSyIGGU", duration: "90:00"},
-      {title: "PHP For Beginners Full", videoId: "2eebptXfEvw", duration: "420:00"},
-      {title: "Object Oriented PHP", videoId: "Anz0ArcQ5kI", duration: "45:30"},
-      {title: "PHP & MySQL Tutorial", videoId: "pWG7ajC_OVo", duration: "60:00"}
-    ]
-  },
-  {
-    id: 14,
-    title: "Bootstrap 5 Crash Course",
-    instructor: "Traversy Media",
-    category: "Web Development",
-    rating: 4.7,
-    students: 350000,
-    thumb: "https://img.youtube.com/vi/4sosXZsdy-s/hqdefault.jpg",
-    lessons: [
-      {title: "Bootstrap 5 Crash Course", videoId: "4sosXZsdy-s", duration: "102:04"},
-      {title: "Bootstrap 5 Tutorial", videoId: "rQryOSyfXmI", duration: "72:00"},
-      {title: "Build a Website with Bootstrap", videoId: "o5vKJmqXO_g", duration: "30:00"},
-      {title: "Bootstrap 5 Project", videoId: "Jyvffr3aCp0", duration: "60:00"}
-    ]
-  },
-  {
-    id: 15,
-    title: "Excel Tutorial",
-    instructor: "Kevin Stratvert",
-    category: "Business",
-    rating: 4.7,
-    students: 680000,
-    thumb: "https://img.youtube.com/vi/Vl0H-qTclOg/hqdefault.jpg",
-    lessons: [
-      {title: "Excel Tutorial Full Course", videoId: "Vl0H-qTclOg", duration: "136:09"},
-      {title: "Excel Formulas and Functions", videoId: "HqoKHdNiL70", duration: "44:30"},
-      {title: "Excel VLOOKUP Tutorial", videoId: "lskOR6_DawA", duration: "11:42"},
-      {title: "Excel Pivot Tables", videoId: "qu-AK0Hv0b4", duration: "29:11"},
-      {title: "Excel Charts and Graphs", videoId: "DAU0qqh_I-A", duration: "28:10"}
-    ]
-  },
-  {
-    id: 16,
-    title: "Figma Tutorial",
-    instructor: "DesignCourse",
-    category: "Design",
-    rating: 4.6,
-    students: 420000,
+    id: 41, title: "Figma for Beginners", instructor: "DesignCourse", category: "Design", rating: 4.6, students: 420000,
     thumb: "https://img.youtube.com/vi/jwCmIBJ8Jtc/hqdefault.jpg",
     lessons: [
-      {title: "Figma Tutorial for Beginners", videoId: "jwCmIBJ8Jtc", duration: "60:00"},
-      {title: "Figma Tutorial 2023", videoId: "HZuk6Wkx_Eg", duration: "52:47"},
-      {title: "Figma UI Design Tutorial", videoId: "FTFaQWZBqQ8", duration: "42:47"},
-      {title: "Figma to HTML Tutorial", videoId: "fZ-bKwwNMCw", duration: "32:12"}
+      {title: "Figma Tutorial", videoId: "jwCmIBJ8Jtc", duration: "60:00"},
+      {title: "Figma UI Design", videoId: "FTFaQWZBqQ8", duration: "42:47"},
+      {title: "Figma to Code", videoId: "fZ-bKwwNMCw", duration: "32:12"}
+    ]
+  },
+  {
+    id: 42, title: "Logo Design", instructor: "Will Paterson", category: "Design", rating: 4.7, students: 280000,
+    thumb: "https://img.youtube.com/vi/pT0k5pHfgXE/hqdefault.jpg",
+    lessons: [
+      {title: "Logo Design Basics", videoId: "pT0k5pHfgXE", duration: "15:22"},
+      {title: "Logo Design Process", videoId: "BvwBVQdY1u4", duration: "22:15"},
+      {title: "Typography for Logos", videoId: "Ck1bEQT-v0w", duration: "12:42"},
+      {title: "Color in Branding", videoId: "9QTCvayLhCA", duration: "18:33"}
+    ]
+  },
+
+  // ===== CRAFTS =====
+  {
+    id: 43, title: "Knitting Basics", instructor: "RJ Knits", category: "Crafts", rating: 4.7, students: 180000,
+    thumb: "https://img.youtube.com/vi/p_R1UDsNOMk/hqdefault.jpg",
+    lessons: [
+      {title: "Knitting for Beginners", videoId: "p_R1UDsNOMk", duration: "22:15"},
+      {title: "Cast On Tutorial", videoId: "3vE3W8EsJfQ", duration: "8:42"},
+      {title: "Basic Knit Stitch", videoId: "S8sT3mD1Y88", duration: "12:08"},
+      {title: "Purl Stitch Tutorial", videoId: "YbAvVa2x4m0", duration: "10:33"}
+    ]
+  },
+  {
+    id: 44, title: "Woodworking Basics", instructor: "Steve Ramsey", category: "Crafts", rating: 4.8, students: 320000,
+    thumb: "https://img.youtube.com/vi/KnKDvUG3Xxk/hqdefault.jpg",
+    lessons: [
+      {title: "Woodworking for Beginners", videoId: "KnKDvUG3Xxk", duration: "18:22"},
+      {title: "Essential Tools", videoId: "8exUt-nBWnc", duration: "15:42"},
+      {title: "First Project", videoId: "hC5Zr5U6vPQ", duration: "22:15"},
+      {title: "Wood Finishing", videoId: "W2pHkxz8m0Y", duration: "12:33"}
+    ]
+  },
+
+  // ===== MORE =====
+  {
+    id: 45, title: "3D Modeling Basics", instructor: "Blender Guru", category: "Design", rating: 4.9, students: 680000,
+    thumb: "https://img.youtube.com/vi/nIoXOplUvAw/hqdefault.jpg",
+    lessons: [
+      {title: "Blender Tutorial Part 1", videoId: "nIoXOplUvAw", duration: "14:33"},
+      {title: "Blender Tutorial Part 2", videoId: "imdYIdv8F4w", duration: "13:42"},
+      {title: "Blender Tutorial Part 3", videoId: "jnj2BL4chaQ", duration: "17:22"},
+      {title: "Blender Tutorial Part 4", videoId: "Rqv13kdLcNw", duration: "18:15"}
+    ]
+  },
+  {
+    id: 46, title: "Animation Basics", instructor: "Bloop Animation", category: "Design", rating: 4.7, students: 240000,
+    thumb: "https://img.youtube.com/vi/uDqjIdI4bF4/hqdefault.jpg",
+    lessons: [
+      {title: "12 Principles of Animation", videoId: "uDqjIdI4bF4", duration: "17:42"},
+      {title: "Timing and Spacing", videoId: "fQBFsTqbKhY", duration: "8:15"},
+      {title: "Walk Cycle Tutorial", videoId: "2y6aVz0Acx0", duration: "22:33"},
+      {title: "Lip Sync Animation", videoId: "aXTOUnzNo64", duration: "15:08"}
+    ]
+  },
+  {
+    id: 47, title: "Podcasting 101", instructor: "Pat Flynn", category: "Business", rating: 4.6, students: 180000,
+    thumb: "https://img.youtube.com/vi/kZEYPNVINBw/hqdefault.jpg",
+    lessons: [
+      {title: "How to Start a Podcast", videoId: "kZEYPNVINBw", duration: "25:15"},
+      {title: "Podcast Equipment", videoId: "S78KYBRbXOM", duration: "18:42"},
+      {title: "Recording Your Podcast", videoId: "qC4VYqXM-nw", duration: "15:33"},
+      {title: "Editing Your Podcast", videoId: "OEgkag4HDXA", duration: "22:08"}
+    ]
+  },
+  {
+    id: 48, title: "Nutrition Basics", instructor: "Jeff Nippard", category: "Fitness", rating: 4.8, students: 420000,
+    thumb: "https://img.youtube.com/vi/9yJKpnfVZWQ/hqdefault.jpg",
+    lessons: [
+      {title: "Nutrition Science", videoId: "d4_U90gQS0c", duration: "18:22"},
+      {title: "How to Count Calories", videoId: "qk_U2r8pT14", duration: "12:15"},
+      {title: "Protein Explained", videoId: "Pok0Jg2JAkE", duration: "15:42"},
+      {title: "Meal Prep Basics", videoId: "K_oILEkvJzU", duration: "22:08"}
+    ]
+  },
+  {
+    id: 49, title: "Psychology Intro", instructor: "CrashCourse", category: "Science", rating: 4.8, students: 580000,
+    thumb: "https://img.youtube.com/vi/vo4pMVb0R6M/hqdefault.jpg",
+    lessons: [
+      {title: "Intro to Psychology", videoId: "vo4pMVb0R6M", duration: "10:33"},
+      {title: "The Brain", videoId: "vHrmiy4W9C0", duration: "11:08"},
+      {title: "Consciousness", videoId: "jReX7qKU2yc", duration: "11:42"},
+      {title: "Memory", videoId: "bSycdIx-C48", duration: "10:55"}
+    ]
+  },
+  {
+    id: 50, title: "Philosophy Intro", instructor: "CrashCourse", category: "Science", rating: 4.7, students: 420000,
+    thumb: "https://img.youtube.com/vi/1A_CAkYt3GY/hqdefault.jpg",
+    lessons: [
+      {title: "What is Philosophy?", videoId: "1A_CAkYt3GY", duration: "10:08"},
+      {title: "Plato", videoId: "VDiyQub6vpw", duration: "9:42"},
+      {title: "Aristotle", videoId: "csIW4W_DYX4", duration: "10:15"},
+      {title: "Existentialism", videoId: "YaDvRdLMkHs", duration: "9:55"}
     ]
   }
 ];
 
-const categories = ['All', 'Programming', 'Web Development', 'Data Science', 'Design', 'Business'];
+const categories = ['All', 'Programming', 'Music', 'Cooking', 'Fitness', 'Art', 'Photography', 'Languages', 'Business', 'Science', 'Math', 'History', 'Wellness', 'Video', 'Gaming', 'Design', 'Crafts'];
 
 let currentCategory = 'All';
 let currentCourse = null;
@@ -543,7 +824,7 @@ function renderCourses(list = null) {
               <div class="course-instructor">${c.instructor}</div>
               <div class="course-meta">
                 <span class="course-rating"><span class="stars">★</span> ${c.rating}</span>
-                <span>(${formatNum(c.students)} students)</span>
+                <span>(${formatNum(c.students)})</span>
               </div>
               <div class="course-price">Free</div>
               <div class="lesson-count">📹 ${c.lessons.length} lessons</div>
@@ -568,7 +849,7 @@ function renderContinueLearning() {
   }
   
   section.style.display = 'block';
-  list.innerHTML = inProgress.map(c => {
+  list.innerHTML = inProgress.slice(0,3).map(c => {
     const prog = getProgress(c.id);
     const completed = progress[c.id]?.completed || [];
     const nextIdx = completed.length < c.lessons.length ? completed.length : 0;
@@ -580,7 +861,7 @@ function renderContinueLearning() {
           <div class="continue-title">${c.title}</div>
           <div class="continue-lesson">▶ ${nextLesson.title}</div>
           <div class="progress-bar"><div class="progress-fill" style="width:${prog}%"></div></div>
-          <div class="progress-text">${prog}% complete • ${completed.length}/${c.lessons.length} lessons</div>
+          <div class="progress-text">${prog}% complete</div>
         </div>
       </div>
     `;
@@ -642,7 +923,7 @@ function renderLessonsList() {
 function updateProgressDisplay() {
   const prog = getProgress(currentCourse.id);
   const completed = progress[currentCourse.id]?.completed || [];
-  document.getElementById('playerProgressText').textContent = `${prog}% (${completed.length}/${currentCourse.lessons.length})`;
+  document.getElementById('playerProgressText').textContent = `${prog}%`;
 }
 
 function playLesson(idx) {
@@ -653,11 +934,7 @@ function playLesson(idx) {
   const completed = progress[currentCourse.id]?.completed || [];
   
   document.getElementById('videoContainer').innerHTML = `
-    <iframe 
-      src="https://www.youtube.com/embed/${lesson.videoId}?autoplay=1&rel=0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
-    </iframe>
+    <iframe src="https://www.youtube.com/embed/${lesson.videoId}?autoplay=1&rel=0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
   `;
   
   document.getElementById('videoTitle').textContent = lesson.title;
@@ -734,10 +1011,7 @@ function saveNote() {
   const key = currentCourse.id + '-' + currentLessonIdx;
   if (!notes[key]) notes[key] = [];
   
-  notes[key].push({
-    text,
-    time: new Date().toLocaleString()
-  });
+  notes[key].push({ text, time: new Date().toLocaleString() });
   
   save();
   document.getElementById('noteInput').value = '';
