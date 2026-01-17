@@ -26,7 +26,6 @@
     .hero p{color:#ccc;font-size:14px}
     
     .main{padding:20px 16px;max-width:1200px;margin:0 auto}
-    
     .section-title{font-size:18px;font-weight:700;margin-bottom:16px}
     
     .categories{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:24px}
@@ -139,7 +138,7 @@
   <div id="homePage">
     <div class="hero">
       <h1>Learn anything. 100% Free.</h1>
-      <p>Real courses from top instructors - completely free forever</p>
+      <p>Curated video courses from top YouTube educators</p>
     </div>
     
     <main class="main">
@@ -211,226 +210,319 @@
   </div>
 
 <script>
-// COURSES WITH SEPARATE VIDEOS FOR EACH LESSON
+// COURSES - Each lesson is from actual video series with similar lengths
 const courses = [
   {
     id: 1,
     title: "Python for Beginners",
-    instructor: "Programming with Mosh",
+    instructor: "Corey Schafer",
     category: "Programming",
-    rating: 4.8,
+    rating: 4.9,
     students: 2500000,
-    thumb: "https://img.youtube.com/vi/kqtD5dpn9C8/hqdefault.jpg",
+    thumb: "https://img.youtube.com/vi/YYXdXT2l-Gg/hqdefault.jpg",
     lessons: [
-      {title: "Python Tutorial for Beginners", videoId: "kqtD5dpn9C8", duration: "1:00:05", channel: "Programming with Mosh"},
-      {title: "Python Variables", videoId: "cQT33yu9pY8", duration: "11:12", channel: "Telusko"},
-      {title: "Python Data Types", videoId: "gCCVsvgR2KU", duration: "16:02", channel: "Corey Schafer"},
-      {title: "Python Strings", videoId: "k9TUPpGqYTo", duration: "21:11", channel: "Corey Schafer"},
-      {title: "Python Lists", videoId: "W8KRzm-HUcc", duration: "15:50", channel: "Corey Schafer"},
-      {title: "Python Dictionaries", videoId: "daefaLgNkw0", duration: "9:59", channel: "Corey Schafer"},
-      {title: "Python Functions", videoId: "9Os0o3wzS_I", duration: "21:48", channel: "Corey Schafer"},
-      {title: "Python Loops", videoId: "6iF8Xb7Z3wQ", duration: "10:14", channel: "Corey Schafer"},
-      {title: "Python If Statements", videoId: "DZwmZ8Usvnk", duration: "16:28", channel: "Corey Schafer"},
-      {title: "Python OOP Tutorial", videoId: "ZDa-Z5JzLYM", duration: "15:24", channel: "Corey Schafer"}
+      {title: "Install and Setup", videoId: "YYXdXT2l-Gg", duration: "15:29"},
+      {title: "Strings - Working with Text", videoId: "k9TUPpGqYTo", duration: "21:12"},
+      {title: "Integers and Floats", videoId: "khKv-8q7YmY", duration: "11:55"},
+      {title: "Lists, Tuples, and Sets", videoId: "W8KRzm-HUcc", duration: "29:05"},
+      {title: "Dictionaries", videoId: "daefaLgNkw0", duration: "9:59"},
+      {title: "Conditionals and Booleans", videoId: "DZwmZ8Usvnk", duration: "16:28"},
+      {title: "Loops and Iterations", videoId: "6iF8Xb7Z3wQ", duration: "10:14"},
+      {title: "Functions", videoId: "9Os0o3wzS_I", duration: "21:48"},
+      {title: "Modules and Pip", videoId: "CqvZ3vGoGs0", duration: "14:54"},
+      {title: "Classes and OOP", videoId: "ZDa-Z5JzLYM", duration: "15:24"}
     ]
   },
   {
     id: 2,
-    title: "JavaScript Fundamentals",
-    instructor: "Traversy Media",
+    title: "JavaScript Essentials",
+    instructor: "Web Dev Simplified",
     category: "Programming",
-    rating: 4.9,
-    students: 3200000,
+    rating: 4.8,
+    students: 1800000,
     thumb: "https://img.youtube.com/vi/hdI2bqOjy3c/hqdefault.jpg",
     lessons: [
-      {title: "JavaScript Crash Course", videoId: "hdI2bqOjy3c", duration: "1:40:29", channel: "Traversy Media"},
-      {title: "JavaScript Variables", videoId: "edlFjlzxkSI", duration: "12:26", channel: "Web Dev Simplified"},
-      {title: "JavaScript Arrays", videoId: "oigfaZ5ApsM", duration: "9:50", channel: "Web Dev Simplified"},
-      {title: "JavaScript Objects", videoId: "napDjGFjHR0", duration: "8:24", channel: "Web Dev Simplified"},
-      {title: "JavaScript Functions", videoId: "FOD408a0EzU", duration: "15:07", channel: "Web Dev Simplified"},
-      {title: "JavaScript DOM Manipulation", videoId: "y17RuWkWdn8", duration: "21:39", channel: "Web Dev Simplified"},
-      {title: "JavaScript Events", videoId: "YiOlaiscqDY", duration: "16:44", channel: "Web Dev Simplified"},
-      {title: "JavaScript Async/Await", videoId: "V_Kr9OSfDeU", duration: "11:08", channel: "Web Dev Simplified"},
-      {title: "JavaScript Fetch API", videoId: "cuEtnrL9-H0", duration: "6:18", channel: "Web Dev Simplified"}
+      {title: "Learn JavaScript in 8 Minutes", videoId: "Rh4_MaLft1Y", duration: "8:21"},
+      {title: "Variables in JavaScript", videoId: "edlFjlzxkSI", duration: "12:26"},
+      {title: "JavaScript Arrays", videoId: "oigfaZ5ApsM", duration: "9:50"},
+      {title: "JavaScript Objects", videoId: "napDjGFjHR0", duration: "8:24"},
+      {title: "JavaScript Functions", videoId: "FOD408a0EzU", duration: "15:07"},
+      {title: "Arrow Functions", videoId: "h33Srr5J9nY", duration: "8:58"},
+      {title: "Array Methods", videoId: "R8rmfD9Y5-c", duration: "8:06"},
+      {title: "Async Await", videoId: "V_Kr9OSfDeU", duration: "11:08"},
+      {title: "Promises", videoId: "DHvZLI7Db8E", duration: "11:31"}
     ]
   },
   {
     id: 3,
-    title: "HTML & CSS for Beginners",
+    title: "CSS Complete Guide",
     instructor: "Kevin Powell",
     category: "Web Development",
-    rating: 4.7,
-    students: 1800000,
-    thumb: "https://img.youtube.com/vi/qz0aGYrrlhU/hqdefault.jpg",
+    rating: 4.8,
+    students: 1200000,
+    thumb: "https://img.youtube.com/vi/1PnVor36_40/hqdefault.jpg",
     lessons: [
-      {title: "HTML Tutorial for Beginners", videoId: "qz0aGYrrlhU", duration: "1:09:33", channel: "Programming with Mosh"},
-      {title: "HTML in 5 Minutes", videoId: "salY_Sm6mv4", duration: "5:29", channel: "Aaron Jack"},
-      {title: "CSS Crash Course", videoId: "yfoY53QXEnI", duration: "1:25:10", channel: "Traversy Media"},
-      {title: "CSS Flexbox", videoId: "JJSoEo8JSnc", duration: "20:49", channel: "Traversy Media"},
-      {title: "CSS Grid", videoId: "jV8B24rSN5o", duration: "18:10", channel: "Traversy Media"},
-      {title: "CSS Variables", videoId: "oZPR_78wCnY", duration: "10:24", channel: "Kevin Powell"},
-      {title: "Responsive Design", videoId: "srvUrASNj0s", duration: "23:07", channel: "Kevin Powell"},
-      {title: "CSS Animations", videoId: "YszONjKpgg4", duration: "28:03", channel: "Traversy Media"}
+      {title: "CSS Basics", videoId: "1PnVor36_40", duration: "23:45"},
+      {title: "CSS Box Model", videoId: "rIO5326FgPE", duration: "9:14"},
+      {title: "CSS Units (em, rem, px)", videoId: "N5wpD9Ov_To", duration: "9:38"},
+      {title: "Flexbox Basics", videoId: "u044iM9xsWU", duration: "8:08"},
+      {title: "Flexbox Practical", videoId: "hwbqquXww-U", duration: "19:59"},
+      {title: "CSS Grid Basics", videoId: "8QSqwbSztnA", duration: "10:31"},
+      {title: "CSS Variables", videoId: "oZPR_78wCnY", duration: "10:24"},
+      {title: "Responsive Design", videoId: "0ohtVzCSHqs", duration: "13:37"},
+      {title: "CSS Transitions", videoId: "Nloq6uzF8RQ", duration: "8:16"}
     ]
   },
   {
     id: 4,
-    title: "React JS Complete Course",
-    instructor: "Traversy Media",
+    title: "React for Beginners",
+    instructor: "Web Dev Simplified",
     category: "Programming",
-    rating: 4.8,
+    rating: 4.9,
     students: 1500000,
-    thumb: "https://img.youtube.com/vi/w7ejDZ8SWv8/hqdefault.jpg",
+    thumb: "https://img.youtube.com/vi/Rh_WfE92Vv0/hqdefault.jpg",
     lessons: [
-      {title: "React JS Crash Course", videoId: "w7ejDZ8SWv8", duration: "1:48:47", channel: "Traversy Media"},
-      {title: "React Components", videoId: "Y2hgEGPzTZY", duration: "10:26", channel: "Web Dev Simplified"},
-      {title: "React Props", videoId: "PHaECbrKgs0", duration: "13:29", channel: "Web Dev Simplified"},
-      {title: "React useState Hook", videoId: "O6P86uwfdR0", duration: "12:40", channel: "Web Dev Simplified"},
-      {title: "React useEffect Hook", videoId: "0ZJgIjIuY7U", duration: "11:34", channel: "Web Dev Simplified"},
-      {title: "React Router", videoId: "Law7wfdg_ls", duration: "24:56", channel: "Web Dev Simplified"},
-      {title: "React Context API", videoId: "5LrDIWkK_Bc", duration: "19:04", channel: "Web Dev Simplified"},
-      {title: "React Custom Hooks", videoId: "6ThXsUwLWvc", duration: "8:56", channel: "Web Dev Simplified"}
+      {title: "Learn React in 30 Minutes", videoId: "Rh_WfE92Vv0", duration: "27:17"},
+      {title: "React Components", videoId: "Y2hgEGPzTZY", duration: "10:26"},
+      {title: "React Props", videoId: "PHaECbrKgs0", duration: "13:29"},
+      {title: "useState Hook", videoId: "O6P86uwfdR0", duration: "12:40"},
+      {title: "useEffect Hook", videoId: "0ZJgIjIuY7U", duration: "11:34"},
+      {title: "useRef Hook", videoId: "t2ypzz6gJm0", duration: "6:57"},
+      {title: "useContext Hook", videoId: "5LrDIWkK_Bc", duration: "19:04"},
+      {title: "Custom Hooks", videoId: "6ThXsUwLWvc", duration: "8:56"}
     ]
   },
   {
     id: 5,
-    title: "Git & GitHub Essentials",
-    instructor: "Traversy Media",
+    title: "Git & GitHub",
+    instructor: "Corey Schafer",
     category: "Programming",
     rating: 4.8,
     students: 890000,
-    thumb: "https://img.youtube.com/vi/SWYqp7iY_Tc/hqdefault.jpg",
+    thumb: "https://img.youtube.com/vi/HVsySz-h9r4/hqdefault.jpg",
     lessons: [
-      {title: "Git & GitHub Crash Course", videoId: "SWYqp7iY_Tc", duration: "32:41", channel: "Traversy Media"},
-      {title: "Git Tutorial for Beginners", videoId: "8JJ101D3knE", duration: "1:09:14", channel: "Programming with Mosh"},
-      {title: "Git Branches", videoId: "e2IbNHi4uCI", duration: "14:27", channel: "Ihatetomatoes"},
-      {title: "Git Merge vs Rebase", videoId: "CRlGDDprdOQ", duration: "9:37", channel: "Academind"},
-      {title: "GitHub Pull Requests", videoId: "rgbCcBNZcdQ", duration: "10:03", channel: "Jake Vanderplas"},
-      {title: "Git Stash", videoId: "DeU6oppRLk8", duration: "6:56", channel: "Ihatetomatoes"}
+      {title: "Git Tutorial - Command Line", videoId: "HVsySz-h9r4", duration: "30:05"},
+      {title: "Git Tutorial - Branches", videoId: "JTE2Fn_sCZs", duration: "14:05"},
+      {title: "Git Tutorial - Merging", videoId: "XX-Kct0PfFc", duration: "17:22"},
+      {title: "Git Tutorial - Rebasing", videoId: "f1wnYdLEpgI", duration: "15:07"},
+      {title: "Git Stash", videoId: "KLEDKgMmbBI", duration: "10:33"},
+      {title: "Git Diff", videoId: "iuJ9EnA0lLI", duration: "13:26"}
     ]
   },
   {
     id: 6,
-    title: "SQL for Beginners",
-    instructor: "Programming with Mosh",
+    title: "SQL Fundamentals",
+    instructor: "Socratica",
     category: "Data Science",
     rating: 4.7,
-    students: 1100000,
-    thumb: "https://img.youtube.com/vi/7S_tz1z_5bA/hqdefault.jpg",
+    students: 720000,
+    thumb: "https://img.youtube.com/vi/nWyyDHhTxYU/hqdefault.jpg",
     lessons: [
-      {title: "SQL Tutorial - Full Course", videoId: "7S_tz1z_5bA", duration: "3:10:20", channel: "Programming with Mosh"},
-      {title: "SQL SELECT Statement", videoId: "PyYgOFjOmrE", duration: "12:35", channel: "Socratica"},
-      {title: "SQL WHERE Clause", videoId: "TnPXHaJNvbQ", duration: "8:21", channel: "Socratica"},
-      {title: "SQL JOINs Explained", videoId: "9yeOJ0ZMUYw", duration: "13:16", channel: "Socratica"},
-      {title: "SQL GROUP BY", videoId: "dPfCp7wtqEI", duration: "7:39", channel: "Socratica"},
-      {title: "SQL Subqueries", videoId: "i5acg3Hvu6g", duration: "10:48", channel: "Socratica"}
+      {title: "What is SQL?", videoId: "nWyyDHhTxYU", duration: "5:12"},
+      {title: "SELECT Statement", videoId: "PyYgOFjOmrE", duration: "12:35"},
+      {title: "WHERE Clause", videoId: "TnPXHaJNvbQ", duration: "8:21"},
+      {title: "AND, OR, NOT", videoId: "P6xLrtIbRUY", duration: "8:44"},
+      {title: "ORDER BY", videoId: "v5XjPxxoFfg", duration: "4:41"},
+      {title: "INSERT INTO", videoId: "Sfs9VAFguqs", duration: "7:08"},
+      {title: "UPDATE Statement", videoId: "yDjLBqJUNbg", duration: "6:23"},
+      {title: "DELETE Statement", videoId: "C_4PZuRgkPY", duration: "5:31"},
+      {title: "JOIN Operations", videoId: "9yeOJ0ZMUYw", duration: "13:16"},
+      {title: "GROUP BY", videoId: "dPfCp7wtqEI", duration: "7:39"}
     ]
   },
   {
     id: 7,
-    title: "Excel Complete Course",
-    instructor: "ExcelIsFun",
-    category: "Business",
-    rating: 4.6,
-    students: 780000,
-    thumb: "https://img.youtube.com/vi/Vl0H-qTclOg/hqdefault.jpg",
+    title: "HTML Crash Course",
+    instructor: "Traversy Media",
+    category: "Web Development",
+    rating: 4.7,
+    students: 980000,
+    thumb: "https://img.youtube.com/vi/UB1O30fR-EE/hqdefault.jpg",
     lessons: [
-      {title: "Excel Tutorial for Beginners", videoId: "Vl0H-qTclOg", duration: "2:16:09", channel: "freeCodeCamp"},
-      {title: "Excel Formulas & Functions", videoId: "KwmNdLYBbks", duration: "30:55", channel: "Leila Gharani"},
-      {title: "Excel VLOOKUP Tutorial", videoId: "sDbKrIvshLQ", duration: "13:20", channel: "Leila Gharani"},
-      {title: "Excel Pivot Tables", videoId: "m0wI61ahfLc", duration: "20:40", channel: "Leila Gharani"},
-      {title: "Excel Charts & Graphs", videoId: "DAU0qqh_I-A", duration: "28:10", channel: "Kevin Stratvert"},
-      {title: "Excel IF Function", videoId: "fUKa6iiQEGw", duration: "11:33", channel: "Leila Gharani"}
+      {title: "HTML Intro & Setup", videoId: "UB1O30fR-EE", duration: "11:00"},
+      {title: "HTML Tags & Elements", videoId: "PlxWf493en4", duration: "12:45"},
+      {title: "HTML Forms", videoId: "fNcJuPIZ2WE", duration: "25:50"},
+      {title: "HTML Tables", videoId: "iDA0kF5lrVk", duration: "15:32"},
+      {title: "HTML5 Semantic Elements", videoId: "kGW8Al_cga4", duration: "12:29"},
+      {title: "HTML Meta Tags", videoId: "bi5bfH_gVWE", duration: "11:03"}
     ]
   },
   {
     id: 8,
-    title: "Photoshop for Beginners",
-    instructor: "Envato Tuts+",
-    category: "Design",
-    rating: 4.6,
+    title: "Node.js Tutorials",
+    instructor: "The Net Ninja",
+    category: "Programming",
+    rating: 4.8,
     students: 650000,
-    thumb: "https://img.youtube.com/vi/IyR_uYsRdPs/hqdefault.jpg",
+    thumb: "https://img.youtube.com/vi/zb3Qk8SG5Ms/hqdefault.jpg",
     lessons: [
-      {title: "Photoshop Tutorial for Beginners", videoId: "IyR_uYsRdPs", duration: "2:10:32", channel: "Envato Tuts+"},
-      {title: "Photoshop Layers Explained", videoId: "FyCmM6Ovdjo", duration: "17:56", channel: "Photoshop Training Channel"},
-      {title: "Photoshop Masks Tutorial", videoId: "CG-InLTrxPU", duration: "17:24", channel: "PHLEARN"},
-      {title: "Photoshop Selection Tools", videoId: "OIMjfpbmB_E", duration: "20:43", channel: "Photoshop Training Channel"},
-      {title: "Photoshop Color Correction", videoId: "lXqhUOUfMEM", duration: "11:31", channel: "PHLEARN"},
-      {title: "Photoshop Text Effects", videoId: "Fz5B8oT0IZE", duration: "12:11", channel: "Photoshop Training Channel"}
+      {title: "Introduction to Node.js", videoId: "zb3Qk8SG5Ms", duration: "6:30"},
+      {title: "Node.js Basics", videoId: "OIBIXYLJjsI", duration: "5:52"},
+      {title: "Clients & Servers", videoId: "-HPZ1leCV8k", duration: "6:14"},
+      {title: "Creating a Server", videoId: "DQD00NAUPNk", duration: "8:05"},
+      {title: "Requests & Responses", videoId: "_lRXKDWn22A", duration: "14:17"},
+      {title: "NPM Basics", videoId: "bdHE2wHT-gQ", duration: "7:52"},
+      {title: "Express Apps", videoId: "Lr9WUkeYSA8", duration: "6:43"},
+      {title: "View Engines (EJS)", videoId: "yXEesONd_54", duration: "10:09"},
+      {title: "Middleware", videoId: "lY6icfhap2o", duration: "9:14"},
+      {title: "MongoDB Setup", videoId: "bxsemcrY4gQ", duration: "7:41"}
     ]
   },
   {
     id: 9,
-    title: "UI/UX Design Fundamentals",
+    title: "Figma UI Design",
     instructor: "DesignCourse",
     category: "Design",
-    rating: 4.7,
-    students: 450000,
-    thumb: "https://img.youtube.com/vi/wIuVvCuiJhU/hqdefault.jpg",
+    rating: 4.6,
+    students: 420000,
+    thumb: "https://img.youtube.com/vi/FTFaQWZBqQ8/hqdefault.jpg",
     lessons: [
-      {title: "UI Design Tutorial for Beginners", videoId: "wIuVvCuiJhU", duration: "23:11", channel: "DesignCourse"},
-      {title: "UX Design Fundamentals", videoId: "YiLUYf4HDh4", duration: "44:40", channel: "DesignCourse"},
-      {title: "Design Principles", videoId: "9EPTM91TBDU", duration: "13:54", channel: "DesignCourse"},
-      {title: "Color Theory for Designers", videoId: "AvgCkHrcj90", duration: "15:47", channel: "DesignCourse"},
-      {title: "Typography Basics", videoId: "agbh1wbfJt8", duration: "16:26", channel: "DesignCourse"},
-      {title: "Figma Tutorial", videoId: "FTFaQWZBqQ8", duration: "42:47", channel: "DesignCourse"}
+      {title: "Figma Tutorial", videoId: "FTFaQWZBqQ8", duration: "42:47"},
+      {title: "Figma Auto Layout", videoId: "PNJxeD29ZTg", duration: "14:48"},
+      {title: "Figma Components", videoId: "k74IrUNaJVk", duration: "19:32"},
+      {title: "Figma Variants", videoId: "y29Xwt9dET0", duration: "16:21"},
+      {title: "Figma Prototyping", videoId: "iBkXf6u8htI", duration: "12:47"},
+      {title: "Figma Design System", videoId: "EK-pHkc5EL4", duration: "27:33"}
     ]
   },
   {
     id: 10,
-    title: "Digital Marketing Masterclass",
-    instructor: "Simplilearn",
-    category: "Marketing",
-    rating: 4.5,
-    students: 560000,
-    thumb: "https://img.youtube.com/vi/hiEb1m5l8aw/hqdefault.jpg",
+    title: "Python Data Analysis",
+    instructor: "Keith Galli",
+    category: "Data Science",
+    rating: 4.7,
+    students: 580000,
+    thumb: "https://img.youtube.com/vi/vmEHCJofslg/hqdefault.jpg",
     lessons: [
-      {title: "Digital Marketing Full Course", videoId: "hiEb1m5l8aw", duration: "5:06:50", channel: "Simplilearn"},
-      {title: "SEO Tutorial for Beginners", videoId: "OYRkIGaP80M", duration: "11:15", channel: "Ahrefs"},
-      {title: "Social Media Marketing", videoId: "I2pwcAVonKI", duration: "45:53", channel: "HubSpot Marketing"},
-      {title: "Email Marketing Tutorial", videoId: "qh6-AO5wq6Q", duration: "24:36", channel: "Mailchimp"},
-      {title: "Google Ads Tutorial", videoId: "oQw8pn-xgZY", duration: "26:40", channel: "Surfside PPC"},
-      {title: "Content Marketing Strategy", videoId: "p3MRUzNRvMI", duration: "8:07", channel: "Neil Patel"}
+      {title: "Pandas Tutorial Part 1", videoId: "vmEHCJofslg", duration: "30:21"},
+      {title: "Pandas Tutorial Part 2", videoId: "tRKeLrwfUgU", duration: "28:15"},
+      {title: "Matplotlib Tutorial", videoId: "3Xc3CA655Y4", duration: "32:33"},
+      {title: "NumPy Tutorial", videoId: "QUT1VHiLmmI", duration: "58:41"},
+      {title: "Seaborn Tutorial", videoId: "6GUZXDef2U0", duration: "46:42"}
     ]
   },
   {
     id: 11,
-    title: "Node.js for Beginners",
-    instructor: "Traversy Media",
+    title: "TypeScript Basics",
+    instructor: "The Net Ninja",
     category: "Programming",
     rating: 4.8,
-    students: 920000,
-    thumb: "https://img.youtube.com/vi/fBNz5xF-Kx4/hqdefault.jpg",
+    students: 390000,
+    thumb: "https://img.youtube.com/vi/2pZmKW9-I_k/hqdefault.jpg",
     lessons: [
-      {title: "Node.js Crash Course", videoId: "fBNz5xF-Kx4", duration: "1:30:00", channel: "Traversy Media"},
-      {title: "Node.js Tutorial for Beginners", videoId: "TlB_eWDSMt4", duration: "1:18:16", channel: "Programming with Mosh"},
-      {title: "Express.js Crash Course", videoId: "L72fhGm1tfE", duration: "1:14:58", channel: "Traversy Media"},
-      {title: "REST API with Node.js", videoId: "-MTSQjw5DrM", duration: "38:08", channel: "Traversy Media"},
-      {title: "Node.js MongoDB Tutorial", videoId: "fbYExfeFsI0", duration: "29:48", channel: "Traversy Media"},
-      {title: "JWT Authentication", videoId: "mbsmsi7l3r4", duration: "27:36", channel: "Web Dev Simplified"}
+      {title: "TypeScript Introduction", videoId: "2pZmKW9-I_k", duration: "2:49"},
+      {title: "Compiling TypeScript", videoId: "iTZ1-85I77c", duration: "5:38"},
+      {title: "Type Basics", videoId: "LKVHFHJsiO0", duration: "6:29"},
+      {title: "Objects & Arrays", videoId: "bfHAGPOg0Xo", duration: "7:17"},
+      {title: "Explicit Types", videoId: "__92ek8Xh4o", duration: "8:00"},
+      {title: "Dynamic Types", videoId: "sNrZiX6bbQM", duration: "5:51"},
+      {title: "Functions", videoId: "P0pL0ePswfc", duration: "10:30"},
+      {title: "Type Aliases", videoId: "fHMzpR-RKJ8", duration: "4:08"},
+      {title: "Function Signatures", videoId: "wK2g2DGFU0Y", duration: "9:33"},
+      {title: "Classes", videoId: "OsFwOzr3_sE", duration: "10:52"}
     ]
   },
   {
     id: 12,
-    title: "Data Science with Python",
-    instructor: "freeCodeCamp",
+    title: "PHP for Beginners",
+    instructor: "Traversy Media",
+    category: "Programming",
+    rating: 4.6,
+    students: 310000,
+    thumb: "https://img.youtube.com/vi/BUCiSSyIGGU/hqdefault.jpg",
+    lessons: [
+      {title: "PHP Intro & Setup", videoId: "BUCiSSyIGGU", duration: "14:08"},
+      {title: "Variables & Data Types", videoId: "zhPsZ8RNgpQ", duration: "8:32"},
+      {title: "Arrays", videoId: "mY3sUhF5mak", duration: "14:55"},
+      {title: "Loops", videoId: "UZCdnGO2--M", duration: "10:07"},
+      {title: "Functions", videoId: "7AnTg8azx9M", duration: "13:28"},
+      {title: "Superglobals", videoId: "Sxmb0hSQrPM", duration: "17:34"},
+      {title: "Form Handling", videoId: "KB3TXgPdqXc", duration: "22:08"}
+    ]
+  },
+  {
+    id: 13,
+    title: "Tailwind CSS",
+    instructor: "The Net Ninja",
+    category: "Web Development",
+    rating: 4.8,
+    students: 280000,
+    thumb: "https://img.youtube.com/vi/bxmDnn7lrnk/hqdefault.jpg",
+    lessons: [
+      {title: "Tailwind Introduction", videoId: "bxmDnn7lrnk", duration: "5:11"},
+      {title: "HTML Template Setup", videoId: "RJa0-I3VpJM", duration: "6:59"},
+      {title: "Fonts & Colors", videoId: "arMgwKNGmwI", duration: "9:17"},
+      {title: "Margin, Padding, Borders", videoId: "8NmjekpKrDA", duration: "9:37"},
+      {title: "Tailwind Config", videoId: "6UVQlB1eo5A", duration: "10:05"},
+      {title: "Custom Fonts", videoId: "arfDRUIZOiw", duration: "8:35"},
+      {title: "Flexbox", videoId: "nYyFiSVWmjk", duration: "11:49"},
+      {title: "Grid", videoId: "qTv6PvZprpo", duration: "11:52"},
+      {title: "Responsive Design", videoId: "VYFjvMfVv2o", duration: "9:32"},
+      {title: "Hover Effects", videoId: "5_BPDve5-3M", duration: "6:50"}
+    ]
+  },
+  {
+    id: 14,
+    title: "MongoDB Basics",
+    instructor: "The Net Ninja",
     category: "Data Science",
     rating: 4.7,
-    students: 680000,
-    thumb: "https://img.youtube.com/vi/ua-CiDNNj30/hqdefault.jpg",
+    students: 240000,
+    thumb: "https://img.youtube.com/vi/ExcRbA7fy_A/hqdefault.jpg",
     lessons: [
-      {title: "Data Science Full Course", videoId: "ua-CiDNNj30", duration: "4:23:51", channel: "freeCodeCamp"},
-      {title: "NumPy Tutorial", videoId: "QUT1VHiLmmI", duration: "58:41", channel: "freeCodeCamp"},
-      {title: "Pandas Tutorial", videoId: "vmEHCJofslg", duration: "1:00:27", channel: "Keith Galli"},
-      {title: "Matplotlib Tutorial", videoId: "3Xc3CA655Y4", duration: "32:33", channel: "Keith Galli"},
-      {title: "Data Visualization with Seaborn", videoId: "6GUZXDef2U0", duration: "46:42", channel: "freeCodeCamp"},
-      {title: "Machine Learning Basics", videoId: "7eh4d6sabA0", duration: "1:01:26", channel: "Programming with Mosh"}
+      {title: "MongoDB Introduction", videoId: "ExcRbA7fy_A", duration: "4:32"},
+      {title: "Installing MongoDB", videoId: "wcx3f0eUiAw", duration: "9:35"},
+      {title: "Collections & Documents", videoId: "ojKJqNQYaOI", duration: "4:42"},
+      {title: "MongoDB Compass", videoId: "bJSj1a84I20", duration: "6:17"},
+      {title: "Adding Documents", videoId: "-bt_y4Loofg", duration: "9:48"},
+      {title: "Finding Documents", videoId: "jKv4GtKYjpA", duration: "11:36"},
+      {title: "Sorting & Limiting", videoId: "WDrU305J1yw", duration: "6:35"},
+      {title: "Nested Documents", videoId: "tycrf-hMwpg", duration: "5:51"},
+      {title: "Operators & Queries", videoId: "VKE0NyDBES8", duration: "10:35"}
+    ]
+  },
+  {
+    id: 15,
+    title: "Excel Formulas",
+    instructor: "Leila Gharani",
+    category: "Business",
+    rating: 4.7,
+    students: 520000,
+    thumb: "https://img.youtube.com/vi/KwmNdLYBbks/hqdefault.jpg",
+    lessons: [
+      {title: "Excel Formulas Intro", videoId: "KwmNdLYBbks", duration: "30:55"},
+      {title: "VLOOKUP Tutorial", videoId: "sDbKrIvshLQ", duration: "13:20"},
+      {title: "XLOOKUP Tutorial", videoId: "jGeeMTI9hVA", duration: "14:48"},
+      {title: "INDEX MATCH", videoId: "F264FpBDX28", duration: "16:22"},
+      {title: "IF Function", videoId: "fUKa6iiQEGw", duration: "11:33"},
+      {title: "SUMIF & COUNTIF", videoId: "1M6bv_kE2i8", duration: "12:15"},
+      {title: "Pivot Tables", videoId: "m0wI61ahfLc", duration: "20:40"}
+    ]
+  },
+  {
+    id: 16,
+    title: "Vue.js 3 Tutorial",
+    instructor: "The Net Ninja",
+    category: "Programming",
+    rating: 4.8,
+    students: 210000,
+    thumb: "https://img.youtube.com/vi/YrxBCBibVo0/hqdefault.jpg",
+    lessons: [
+      {title: "Vue 3 Introduction", videoId: "YrxBCBibVo0", duration: "4:02"},
+      {title: "Vue 3 Setup", videoId: "V-xK3sbc7xI", duration: "5:06"},
+      {title: "Dynamic Values", videoId: "3hOK7GJxofY", duration: "4:42"},
+      {title: "Click Events", videoId: "01GAz1gS70A", duration: "6:52"},
+      {title: "Conditional Rendering", videoId: "R3E1FdSj9eI", duration: "6:04"},
+      {title: "Event Handling", videoId: "_QSrR0pOvGk", duration: "7:02"},
+      {title: "Array Rendering", videoId: "5EhAuMl5karU", duration: "7:11"},
+      {title: "Components", videoId: "0RZ2uyqMphI", duration: "8:48"},
+      {title: "Props", videoId: "9lQUKXYj97U", duration: "8:03"},
+      {title: "Custom Events", videoId: "EEeaG0BTBQo", duration: "8:15"}
     ]
   }
 ];
 
-const categories = ['All', 'Programming', 'Web Development', 'Data Science', 'Design', 'Business', 'Marketing'];
+const categories = ['All', 'Programming', 'Web Development', 'Data Science', 'Design', 'Business'];
 
 let currentCategory = 'All';
 let currentCourse = null;
@@ -558,7 +650,7 @@ function renderContinueLearning() {
 function showMyLearning() {
   const started = courses.filter(c => getProgress(c.id) > 0);
   if (started.length === 0) {
-    alert('You haven\'t started any courses yet!');
+    alert('Start a course first!');
     return;
   }
   currentCategory = 'All';
@@ -597,7 +689,7 @@ function renderLessonsList() {
     <div class="lesson-item ${i === currentLessonIdx ? 'active' : ''} ${completed.includes(i) ? 'completed' : ''}" onclick="playLesson(${i})">
       <div class="lesson-check">${completed.includes(i) ? '✓' : i + 1}</div>
       <div class="lesson-info">
-        <div class="lesson-num">${l.channel}</div>
+        <div class="lesson-num">Lesson ${i + 1}</div>
         <div class="lesson-name">${l.title}</div>
       </div>
       <div class="lesson-dur">${l.duration}</div>
@@ -620,7 +712,6 @@ function playLesson(idx) {
   const lesson = currentCourse.lessons[idx];
   const completed = progress[currentCourse.id]?.completed || [];
   
-  // Each lesson is a SEPARATE video!
   document.getElementById('videoContainer').innerHTML = `
     <iframe 
       src="https://www.youtube.com/embed/${lesson.videoId}?autoplay=1&rel=0" 
@@ -630,7 +721,7 @@ function playLesson(idx) {
   `;
   
   document.getElementById('videoTitle').textContent = lesson.title;
-  document.getElementById('videoChannel').textContent = '📺 ' + lesson.channel + ' • ' + lesson.duration;
+  document.getElementById('videoChannel').textContent = '⏱ ' + lesson.duration + ' • ' + currentCourse.instructor;
   
   const btn = document.getElementById('completeBtn');
   if (completed.includes(idx)) {
@@ -657,7 +748,6 @@ function toggleComplete() {
     completed.push(currentLessonIdx);
     progress[currentCourse.id].completed = [...new Set(completed)].sort((a,b) => a - b);
     
-    // Auto-go to next lesson
     if (currentLessonIdx < currentCourse.lessons.length - 1) {
       setTimeout(() => playLesson(currentLessonIdx + 1), 500);
     }
@@ -706,8 +796,7 @@ function saveNote() {
   
   notes[key].push({
     text,
-    time: new Date().toLocaleString(),
-    lesson: currentCourse.lessons[currentLessonIdx].title
+    time: new Date().toLocaleString()
   });
   
   save();
